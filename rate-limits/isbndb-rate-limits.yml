@@ -1,0 +1,62 @@
+name: ISBNdb API Rate Limits
+description: Rate limiting policies for the ISBNdb book and ISBN database REST API
+url: https://isbndb.com/api-documentation
+limits:
+  - plan: Basic
+    window: second
+    max_requests: 1
+    description: One request per second for Basic plan subscribers
+  - plan: Basic
+    window: day
+    max_requests: 1000
+    description: 1,000 daily API calls for Basic plan subscribers; resets at 00:00 UTC
+  - plan: Academic
+    window: second
+    max_requests: 1
+    description: One request per second for Academic plan subscribers
+  - plan: Academic
+    window: day
+    max_requests: 2000
+    description: 2,000 daily API calls for Academic plan; resets at 00:00 UTC
+  - plan: Premium
+    window: second
+    max_requests: 3
+    description: Three requests per second for Premium plan subscribers
+  - plan: Premium
+    window: day
+    max_requests: 5000
+    description: 5,000 daily API calls for Premium plan subscribers; resets at 00:00 UTC
+  - plan: Pro
+    window: second
+    max_requests: 5
+    description: Five requests per second for Pro plan subscribers
+  - plan: Pro
+    window: day
+    max_requests: 15000
+    description: 15,000 daily API calls for Pro plan subscribers; resets at 00:00 UTC
+  - plan: Enterprise
+    window: second
+    max_requests: 10
+    description: Ten requests per second for Enterprise plan subscribers
+  - plan: Enterprise
+    window: day
+    max_requests: 50000
+    description: 50,000 daily API calls for Enterprise plan subscribers; resets at 00:00 UTC
+headers:
+  - name: ratelimit
+    description: Current rate limit status returned in every API response header
+  - name: ratelimit-policy
+    description: Rate limit policy details returned in every API response header
+error_responses:
+  - code: 429
+    message: Per minute quota exceeded, please try again later
+    description: Returned when per-minute request rate is exceeded
+  - code: 429
+    message: Daily quota exceeded, please try again later
+    description: Returned when daily call limit is exhausted; resets at 00:00 UTC
+  - code: 401
+    message: Full authentication is required to access this resource
+    description: Returned when x-api-key header is missing, invalid, or subscription is inactive
+reset: 00:00 UTC daily
+monitoring_endpoint: GET /key
+monitoring_description: Returns current API key details and quota usage information

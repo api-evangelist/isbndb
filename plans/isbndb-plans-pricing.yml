@@ -1,0 +1,91 @@
+name: ISBNdb API Plans and Pricing
+description: Subscription plans for access to the ISBNdb book and ISBN database REST API
+url: https://isbndb.com/isbn-database
+plans:
+  - name: Basic
+    description: Entry-level plan for developers and small applications needing book metadata
+    price: 14.99
+    currency: USD
+    period: month
+    features:
+      - Book search by ISBN, title, author, publisher
+      - Up to 19 data points per book
+      - Standard metadata fields
+      - 7-day free trial
+    limits:
+      - name: Daily API Calls
+        value: 1000
+      - name: Requests Per Second
+        value: 1
+      - name: Bulk Results Per Call
+        value: 10
+  - name: Academic
+    description: Discounted plan for academic and educational use with standard data access
+    price: 14.99
+    currency: USD
+    period: month
+    features:
+      - All Basic plan features
+      - Academic use discount
+    limits:
+      - name: Daily API Calls
+        value: 2000
+      - name: Requests Per Second
+        value: 1
+      - name: Bulk Results Per Call
+        value: 10
+  - name: Premium
+    description: Mid-tier plan with higher call volumes, all data fields, and bulk data access
+    price: 35.99
+    currency: USD
+    period: month
+    features:
+      - All data fields
+      - Bulk data access (up to 1000 books per call)
+      - Recent update feeds (7-day history)
+      - All Basic plan features
+    limits:
+      - name: Daily API Calls
+        value: 5000
+      - name: Requests Per Second
+        value: 3
+      - name: Bulk Results Per Call
+        value: 1000
+  - name: Pro
+    description: High-volume plan with real-time prices, bulk data, and elevated call limits
+    price: 99.99
+    currency: USD
+    period: month
+    features:
+      - All data fields
+      - Bulk data access (up to 1000 books per call)
+      - Real-time book prices
+      - Recent update feeds (7-day history)
+      - Tech support
+      - All Premium plan features
+    limits:
+      - name: Daily API Calls
+        value: 15000
+      - name: Requests Per Second
+        value: 5
+      - name: Bulk Results Per Call
+        value: 1000
+  - name: Enterprise
+    description: High-volume enterprise plan with all features including real-time pricing
+    price: 299.99
+    currency: USD
+    period: month
+    features:
+      - All data fields
+      - Bulk data access (up to 1000 books per call)
+      - Real-time book prices
+      - Recent update feeds
+      - Priority tech support
+      - All Pro plan features
+    limits:
+      - name: Daily API Calls
+        value: 50000
+      - name: Requests Per Second
+        value: 10
+      - name: Bulk Results Per Call
+        value: 1000

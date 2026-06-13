@@ -1,0 +1,52 @@
+name: ISBNdb API FinOps
+description: Financial operations guidance for managing ISBNdb API costs and usage
+url: https://isbndb.com/isbn-database
+cost_model: subscription
+billing_period: monthly
+currency: USD
+plans:
+  - name: Basic
+    monthly_cost: 14.99
+    annual_cost: 179.88
+    daily_calls: 1000
+    cost_per_call: 0.01499
+    notes: 7-day free trial available; no contract required
+  - name: Academic
+    monthly_cost: 14.99
+    annual_cost: 179.88
+    daily_calls: 2000
+    cost_per_call: 0.0075
+    notes: Discounted plan for academic and educational institutions
+  - name: Premium
+    monthly_cost: 35.99
+    annual_cost: 431.88
+    daily_calls: 5000
+    cost_per_call: 0.0072
+    notes: Includes bulk data access and all data fields
+  - name: Pro
+    monthly_cost: 99.99
+    annual_cost: 1199.88
+    annual_discounted: 765.00
+    daily_calls: 15000
+    cost_per_call: 0.00667
+    notes: Annual plan available at discounted rate of ~$305/year per search results; includes real-time book prices
+  - name: Enterprise
+    monthly_cost: 299.99
+    annual_cost: 3599.88
+    daily_calls: 50000
+    cost_per_call: 0.006
+    notes: Highest tier with all features and priority support
+cost_optimization:
+  - tip: Monitor daily quota with GET /key endpoint to avoid unexpected throttling
+  - tip: Use bulk POST /books endpoint to retrieve up to 1,000 ISBNs in a single call (Premium+ plans) to maximize value per API call
+  - tip: Cache book metadata responses locally since book data changes infrequently
+  - tip: Use /feeds/books/updates to pull only recently changed records rather than re-querying static data
+  - tip: Consider annual billing for Pro plan to reduce cost by approximately 36%
+  - tip: Academic institutions can use the Academic plan at Basic pricing with higher daily call limits
+  - tip: Inspect ratelimit response headers to track quota consumption in real time
+trial:
+  available: true
+  duration_days: 7
+  plan: Basic
+  notes: Free 7-day trial on the Basic plan; no credit card details mentioned as required upfront
+cancellation: Monthly subscription; cancel any time; no contract
