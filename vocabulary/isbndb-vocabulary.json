@@ -1,0 +1,135 @@
+{
+  "vocabulary": {
+    "name": "ISBNdb API Vocabulary",
+    "description": "Domain vocabulary for the ISBNdb API covering book metadata, identifiers, and publishing concepts.",
+    "version": "1.0.0",
+    "source": "https://isbndb.com/api-documentation",
+    "terms": [
+      {
+        "term": "ISBN",
+        "definition": "International Standard Book Number — a numeric commercial book identifier. ISBNdb supports both ISBN-10 and ISBN-13 formats.",
+        "type": "identifier"
+      },
+      {
+        "term": "ISBN-10",
+        "definition": "The 10-digit form of the International Standard Book Number used before 2007.",
+        "type": "identifier",
+        "field": "isbn10"
+      },
+      {
+        "term": "ISBN-13",
+        "definition": "The 13-digit EAN-based form of the International Standard Book Number, standard since 2007.",
+        "type": "identifier",
+        "field": "isbn13"
+      },
+      {
+        "term": "Dewey Decimal",
+        "definition": "The Dewey Decimal Classification system number(s) assigned to a book for library cataloging purposes.",
+        "type": "classification",
+        "field": "dewey_decimal"
+      },
+      {
+        "term": "binding",
+        "definition": "The physical form of a book's cover and binding — common values include Hardcover, Paperback, eBook, and Spiral-bound.",
+        "type": "attribute",
+        "field": "binding"
+      },
+      {
+        "term": "date_published",
+        "definition": "The publication date of a specific edition. Accepted formats are YYYY-MM-DD, YYYY-MM, or YYYY.",
+        "type": "attribute",
+        "field": "date_published"
+      },
+      {
+        "term": "edition",
+        "definition": "The edition of a book, such as '3rd', 'Revised', or 'Anniversary Edition'.",
+        "type": "attribute",
+        "field": "edition"
+      },
+      {
+        "term": "msrp",
+        "definition": "Manufacturer's Suggested Retail Price — the recommended price set by the publisher.",
+        "type": "attribute",
+        "field": "msrp"
+      },
+      {
+        "term": "synopsis",
+        "definition": "A full textual summary or description of the book's content.",
+        "type": "attribute",
+        "field": "synopsis"
+      },
+      {
+        "term": "subjects",
+        "definition": "A list of subject headings or categories the book belongs to, used for classification and discovery.",
+        "type": "attribute",
+        "field": "subjects"
+      },
+      {
+        "term": "other_isbns",
+        "definition": "ISBNs of related editions of the same work (e.g., hardcover, paperback, digital) with their binding types.",
+        "type": "relationship",
+        "field": "other_isbns"
+      },
+      {
+        "term": "prices",
+        "definition": "Real-time pricing information from various merchants including condition, shipping, and purchase links. Available on Pro plan and higher.",
+        "type": "attribute",
+        "field": "prices"
+      },
+      {
+        "term": "plan_limit",
+        "definition": "The daily API call quota associated with an API key, including total allowed, spent, and remaining calls.",
+        "type": "concept",
+        "field": "plan_limit"
+      },
+      {
+        "term": "pageSize",
+        "definition": "The number of results returned per page. Maximum value is 1,000.",
+        "type": "pagination",
+        "field": "pageSize"
+      },
+      {
+        "term": "page",
+        "definition": "The page number to retrieve. The API will not return more than 10,000 total results regardless of pagination.",
+        "type": "pagination",
+        "field": "page"
+      },
+      {
+        "term": "publishedFrom",
+        "definition": "Date filter for books published on or after a given date. Formats: YYYY, YYYY-MM, or YYYY-MM-DD. Cannot be combined with 'year'.",
+        "type": "filter",
+        "field": "publishedFrom"
+      },
+      {
+        "term": "publishedTo",
+        "definition": "Date filter for books published on or before a given date. Formats: YYYY, YYYY-MM, or YYYY-MM-DD. Cannot be combined with 'year'.",
+        "type": "filter",
+        "field": "publishedTo"
+      },
+      {
+        "term": "column",
+        "definition": "Search scope constraint for book queries. Options: title, author, date_published, subjects. Empty value searches all columns.",
+        "type": "filter",
+        "field": "column",
+        "allowedValues": ["title", "author", "date_published", "subjects"]
+      },
+      {
+        "term": "shouldMatchAll",
+        "definition": "When true, returns only books where the title or author exactly contains all words in the query.",
+        "type": "filter",
+        "field": "shouldMatchAll"
+      },
+      {
+        "term": "lastUpdated",
+        "definition": "A date filter (YYYY-MM-DD) used in the feed endpoint to retrieve books updated on or after this date.",
+        "type": "filter",
+        "field": "lastUpdated"
+      },
+      {
+        "term": "ApiKeyAuth",
+        "definition": "Authentication scheme for the ISBNdb API. An API key must be supplied in the Authorization HTTP header.",
+        "type": "security"
+      }
+    ]
+  }
+}

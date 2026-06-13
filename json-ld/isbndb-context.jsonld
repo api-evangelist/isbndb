@@ -1,0 +1,124 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "isbndb": "https://isbndb.com/api/v2/",
+    "isbn13": {
+      "@id": "schema:isbn",
+      "@type": "@id"
+    },
+    "isbn10": {
+      "@id": "schema:isbn"
+    },
+    "isbn": {
+      "@id": "schema:isbn"
+    },
+    "title": "schema:name",
+    "title_long": "schema:alternateName",
+    "authors": {
+      "@id": "schema:author",
+      "@type": "schema:Person"
+    },
+    "publisher": {
+      "@id": "schema:publisher",
+      "@type": "schema:Organization"
+    },
+    "date_published": {
+      "@id": "schema:datePublished",
+      "@type": "schema:Date"
+    },
+    "language": {
+      "@id": "schema:inLanguage"
+    },
+    "pages": {
+      "@id": "schema:numberOfPages",
+      "@type": "schema:Integer"
+    },
+    "edition": {
+      "@id": "schema:bookEdition"
+    },
+    "binding": {
+      "@id": "schema:bookFormat"
+    },
+    "synopsis": {
+      "@id": "schema:description"
+    },
+    "overview": {
+      "@id": "schema:abstract"
+    },
+    "excerpt": {
+      "@id": "schema:text"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "image_original": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "@id"
+    },
+    "subjects": {
+      "@id": "schema:about"
+    },
+    "msrp": {
+      "@id": "schema:price",
+      "@type": "schema:Number"
+    },
+    "dewey_decimal": {
+      "@id": "isbndb:deweyDecimal"
+    },
+    "dimensions": {
+      "@id": "schema:size"
+    },
+    "dimensions_structured": {
+      "@id": "isbndb:dimensionsStructured"
+    },
+    "prices": {
+      "@id": "schema:offers",
+      "@type": "schema:Offer"
+    },
+    "other_isbns": {
+      "@id": "schema:workExample",
+      "@type": "schema:Book"
+    },
+    "reviews": {
+      "@id": "schema:review",
+      "@type": "schema:Review"
+    },
+    "condition": {
+      "@id": "schema:itemCondition"
+    },
+    "merchant": {
+      "@id": "schema:seller",
+      "@type": "schema:Organization"
+    },
+    "merchant_logo": {
+      "@id": "schema:logo",
+      "@type": "@id"
+    },
+    "price": {
+      "@id": "schema:price"
+    },
+    "total": {
+      "@id": "isbndb:totalPrice"
+    },
+    "shipping": {
+      "@id": "schema:shippingRate"
+    },
+    "link": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "total_results": {
+      "@id": "schema:numberOfItems",
+      "@type": "schema:Integer"
+    },
+    "page": {
+      "@id": "isbndb:page",
+      "@type": "schema:Integer"
+    },
+    "page_size": {
+      "@id": "isbndb:pageSize",
+      "@type": "schema:Integer"
+    }
+  }
+}

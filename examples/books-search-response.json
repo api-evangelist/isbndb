@@ -1,0 +1,32 @@
+{
+  "total": 2,
+  "data": [
+    {
+      "title": "The Great Gatsby",
+      "isbn13": "9780743273565",
+      "isbn10": "0743273567",
+      "binding": "Paperback",
+      "publisher": "Scribner",
+      "language": "en",
+      "date_published": "2004-09-30",
+      "pages": 180,
+      "image": "https://images.isbndb.com/covers/35/65/9780743273565.jpg",
+      "authors": ["F. Scott Fitzgerald"],
+      "subjects": ["Fiction", "Classics"]
+    },
+    {
+      "title": "The Great Gatsby (Penguin Classics)",
+      "isbn13": "9780141182636",
+      "isbn10": "0141182636",
+      "binding": "Paperback",
+      "publisher": "Penguin Classics",
+      "language": "en",
+      "date_published": "2000-11-02",
+      "pages": 224,
+      "image": "https://images.isbndb.com/covers/26/36/9780141182636.jpg",
+      "authors": ["F. Scott Fitzgerald"],
+      "subjects": ["Fiction", "Classics", "American Literature"]
+    }
+  ],
+  "requested": null
+}

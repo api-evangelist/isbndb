@@ -1,0 +1,51 @@
+{
+  "book": {
+    "title": "The Great Gatsby",
+    "title_long": "The Great Gatsby",
+    "isbn": "9780743273565",
+    "isbn13": "9780743273565",
+    "isbn10": "0743273567",
+    "dewey_decimal": ["813.52"],
+    "binding": "Paperback",
+    "publisher": "Scribner",
+    "language": "en",
+    "date_published": "2004-09-30",
+    "edition": "1st Scribner trade paperback edition",
+    "pages": 180,
+    "dimensions": "8.4 x 5.5 x 0.5 inches",
+    "dimensions_structured": {
+      "height": {"unit": "IN", "value": 8.4},
+      "length": {"unit": "IN", "value": 5.5},
+      "weight": {"unit": "Pounds", "value": 0.45},
+      "width": {"unit": "IN", "value": 0.5}
+    },
+    "overview": "A novel set in the Jazz Age on Long Island.",
+    "image": "https://images.isbndb.com/covers/35/65/9780743273565.jpg",
+    "image_original": null,
+    "msrp": 18.00,
+    "excerpt": null,
+    "synopsis": "The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+    "authors": ["F. Scott Fitzgerald"],
+    "subjects": ["Fiction", "Classics", "American Literature"],
+    "reviews": [],
+    "prices": [
+      {
+        "condition": "new",
+        "merchant": "Amazon",
+        "merchant_logo": "https://example.com/amazon-logo.png",
+        "merchant_logo_offset": {"x": "0", "y": "0"},
+        "shipping": "0.00",
+        "price": "12.49",
+        "total": "12.49",
+        "link": "https://www.amazon.com/dp/0743273567"
+      }
+    ],
+    "related": null,
+    "other_isbns": [
+      {
+        "isbn": "9780684801520",
+        "binding": "Hardcover"
+      }
+    ]
+  }
+}

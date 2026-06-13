@@ -1,0 +1,35 @@
+{
+  "author": "fitzgerald-f-scott",
+  "name": "F. Scott Fitzgerald",
+  "books": [
+    {
+      "title": "The Great Gatsby",
+      "isbn13": "9780743273565",
+      "isbn10": "0743273567",
+      "binding": "Paperback",
+      "publisher": "Scribner",
+      "language": "en",
+      "date_published": "2004-09-30",
+      "pages": 180,
+      "image": "https://images.isbndb.com/covers/35/65/9780743273565.jpg",
+      "authors": ["F. Scott Fitzgerald"],
+      "subjects": ["Fiction", "Classics"]
+    },
+    {
+      "title": "Tender Is the Night",
+      "isbn13": "9780684801544",
+      "isbn10": "0684801540",
+      "binding": "Paperback",
+      "publisher": "Scribner",
+      "language": "en",
+      "date_published": "1996-02-01",
+      "pages": 320,
+      "image": "https://images.isbndb.com/covers/15/44/9780684801544.jpg",
+      "authors": ["F. Scott Fitzgerald"],
+      "subjects": ["Fiction", "Classics"]
+    }
+  ],
+  "total": 42,
+  "page": 1,
+  "page_size": 20
+}
