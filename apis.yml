@@ -38,6 +38,10 @@ apis:
         url: https://isbndb.com/faq
         email: ''
 common:
+  - type: DomainSecurity
+    url: security/isbndb-domain-security.yml
+  - type: Authentication
+    url: authentication/isbndb-authentication.yml
   - type: Website
     url: https://isbndb.com
   - type: Documentation
