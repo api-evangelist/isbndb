@@ -1,0 +1,182 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 16
+  by_action_class:
+    connected: 15
+    acting: 1
+  by_consequence:
+    read: 15
+    write: 1
+  human_in_the_loop_required: 0
+operations:
+- path: /author/{name}
+  method: get
+  operationId: get_app_api_author_authordetails__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /authors/{query}
+  method: get
+  operationId: get_app_api_author_searchauthors__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /book/{isbn}
+  method: get
+  operationId: get_app_api_book_book__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /books
+  method: post
+  operationId: post_app_api_book_bookmultiple__invoke
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /books/{query}
+  method: get
+  operationId: get_app_api_book_searchbook__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /feeds/books/updates
+  method: get
+  operationId: get_app_api_feed_updatedbooks__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /key
+  method: get
+  operationId: get_app_api_key__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /publisher/{name}
+  method: get
+  operationId: get_app_api_publisher_publisherdetails__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /publishers/{query}
+  method: get
+  operationId: get_app_api_publisher_searchpublishers__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /search/authors
+  method: get
+  operationId: get_app_api_search_searchauthors__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /search/books
+  method: get
+  operationId: get_app_api_search_searchbooks__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /search/publishers
+  method: get
+  operationId: get_app_api_search_searchpublishers__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /search/subjects
+  method: get
+  operationId: get_app_api_search_searchsubjects__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /stats
+  method: get
+  operationId: get_app_api_stats_getstats__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /subjects/{query}
+  method: get
+  operationId: get_app_api_subject_searchsubjects__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /subject/{name}
+  method: get
+  operationId: get_app_api_subject_subjectsdetails__invoke
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
