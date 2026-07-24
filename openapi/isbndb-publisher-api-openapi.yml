@@ -1,0 +1,357 @@
+openapi: 3.0.0
+info:
+  title: ISBNdb API v2 Author Publisher API
+  description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
+  version: 2.7.0
+servers:
+- url: https://api2.isbndb.com
+  description: API Endpoint
+tags:
+- name: Publisher
+  description: Publisher endpoints
+paths:
+  /publisher/{name}:
+    get:
+      tags:
+      - Publisher
+      summary: Gets publisher details
+      description: Returns the name and a list of books by the publisher.
+      operationId: get_app_api_publisher_publisherdetails__invoke
+      parameters:
+      - name: name
+        in: path
+        description: 'The publisher name. **Max length: 150 characters**.'
+        required: true
+        schema:
+          type: string
+      - name: language
+        in: query
+        required: false
+        schema:
+          type: string
+          nullable: true
+          default: null
+          maxLength: 50
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 1
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 20
+      - name: publishedFrom
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: .*(^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$).*
+          nullable: true
+          default: null
+      - name: publishedTo
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: .*(^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$).*
+          nullable: true
+          default: null
+      responses:
+        '200':
+          description: Returns the publisher details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailsResponse'
+      security:
+      - ApiKeyAuth: []
+  /publishers/{query}:
+    get:
+      tags:
+      - Publisher
+      summary: Search publishers
+      description: This returns a list of publishers whose name matches the given query
+      operationId: get_app_api_publisher_searchpublishers__invoke
+      parameters:
+      - name: query
+        in: path
+        description: 'The search query string. **Max length: 150 characters**.'
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 1
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 20
+      responses:
+        '200':
+          description: The query string found results in the publisher's database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPublishersResponse'
+      security:
+      - ApiKeyAuth: []
+components:
+  schemas:
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
+    SearchPublishersResponse:
+      required:
+      - name
+      - publishers
+      - total
+      - page
+      - page_size
+      properties:
+        name:
+          type: string
+        publishers:
+          type: array
+          items:
+            type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+    Price:
+      required:
+      - condition
+      - merchant
+      - merchant_logo
+      - merchant_logo_offset
+      - shipping
+      - price
+      - total
+      - link
+      properties:
+        condition:
+          description: Condition of the book offered at this price (e.g. new, used, digital)
+          type: string
+        merchant:
+          description: Name of the merchant offering this price
+          type: string
+        merchant_logo:
+          description: URL of the merchant logo image
+          type: string
+        merchant_logo_offset:
+          $ref: '#/components/schemas/Point'
+        shipping:
+          description: Shipping cost for this offer
+          type: string
+        price:
+          description: Item price excluding shipping
+          type: string
+        total:
+          description: Total price including shipping
+          type: string
+        link:
+          description: URL to purchase the book from this merchant
+          type: string
+      type: object
+    Book:
+      required:
+      - title
+      - title_long
+      - isbn
+      - isbn13
+      - date_published
+      properties:
+        title:
+          description: Title
+          type: string
+        title_long:
+          description: Long title (deprecated)
+          type: string
+          deprecated: true
+        isbn:
+          description: ISBN-13 (deprecated, use isbn13)
+          type: string
+          deprecated: true
+        isbn13:
+          description: ISBN-13
+          type: string
+        isbn10:
+          description: Book ISBN-10, if available
+          type: string
+          nullable: true
+        dewey_decimal:
+          description: Dewey Decimal Classification numbers assigned to the book
+          type: array
+          items:
+            type: string
+          nullable: true
+        binding:
+          description: Book binding type (e.g. Hardcover, Paperback, eBook)
+          type: string
+          nullable: true
+        publisher:
+          description: Name of the publisher
+          type: string
+          nullable: true
+        language:
+          description: Language of the book (ISO 639-1 code or full name)
+          type: string
+          nullable: true
+        date_published:
+          description: A publication date in YYYY-MM-DD, YYYY-MM, or YYYY format.
+          type: string
+          format: date
+          example: '2023-10-26'
+        edition:
+          description: Edition of the book (e.g. 3rd, Revised)
+          type: string
+          nullable: true
+        pages:
+          description: Number of pages in the book
+          type: integer
+          nullable: true
+        dimensions:
+          description: Physical dimensions of the book as a formatted string (deprecated)
+          type: string
+          nullable: true
+          deprecated: true
+        dimensions_structured:
+          description: Structured physical dimensions of the book
+          nullable: true
+          oneOf:
+          - type: array
+            items:
+              nullable: true
+          - type: object
+            additionalProperties:
+              nullable: true
+        overview:
+          description: Brief overview or description of the book (deprecated)
+          type: string
+          nullable: true
+          deprecated: true
+        image:
+          description: Image link. Maximum height is 500px.
+          type: string
+          nullable: true
+        image_original:
+          description: 'Original image link. Note: This URL is temporary and will expire 2 hours after the API response is generated.'
+          type: string
+          nullable: true
+        msrp:
+          description: Manufacturer's suggested retail price
+          type: number
+          format: float
+          nullable: true
+        excerpt:
+          description: Short excerpt from the book
+          type: string
+          nullable: true
+        synopsis:
+          description: Full synopsis or summary of the book
+          type: string
+          nullable: true
+        authors:
+          description: List of authors of the book
+          type: array
+          items:
+            type: string
+          nullable: true
+        subjects:
+          description: List of subjects or categories the book belongs to
+          type: array
+          items:
+            type: string
+          nullable: true
+        reviews:
+          description: User or editorial reviews of the book (deprecated)
+          type: array
+          items:
+            type: string
+          nullable: true
+          deprecated: true
+        prices:
+          description: Available prices from various merchants
+          type: array
+          items:
+            $ref: '#/components/schemas/Price'
+          nullable: true
+        related:
+          description: Related books (deprecated)
+          nullable: true
+          deprecated: true
+          oneOf:
+          - type: array
+            items:
+              nullable: true
+          - type: object
+            additionalProperties:
+              nullable: true
+        other_isbns:
+          description: Other ISBNs associated with this book (e.g. different formats or editions)
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatedIsbn'
+          nullable: true
+      type: object
+    DetailsResponse:
+      required:
+      - name
+      - books
+      - total
+      - page
+      - page_size
+      properties:
+        name:
+          type: string
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header

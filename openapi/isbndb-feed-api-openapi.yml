@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: ISBNdb API v2 Author Feed API
+  description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
+  version: 2.7.0
+servers:
+- url: https://api2.isbndb.com
+  description: API Endpoint
+tags:
+- name: Feed
+  description: Feed endpoints for incremental sync
+paths:
+  /feeds/books/updates:
+    get:
+      tags:
+      - Feed
+      summary: Get recently updated book ISBNs
+      description: 'Retrieves a list of book ISBNs that have been added or modified. This endpoint is designed for frequent incremental synchronization.
+
+
+        **Important Notes:**
+
+        * **Plan limits:** Available exclusively for **Premium** plans and higher.
+
+        * **History limit:** The update history is strictly limited to the last **7 days**.
+
+        * **Quota:** Calling this endpoint does not count towards your daily API limits.
+
+        * **Pagination:** The response does not include a total field. To fetch all updates, continue requesting subsequent pages (incrementing the page parameter) until the data array in the response is empty.'
+      operationId: get_app_api_feed_updatedbooks__invoke
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 1
+          minimum: 1
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          nullable: true
+          default: 100
+          maximum: 1000
+          minimum: 1
+      - name: lastUpdated
+        in: query
+        description: 'Filter by last updated date (Format: YYYY-MM-DD)'
+        required: false
+        schema:
+          type: string
+          nullable: true
+          default: null
+      responses:
+        '200':
+          description: Returns a list of recently updated book ISBNs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedBooksResponse'
+      security:
+      - ApiKeyAuth: []
+components:
+  schemas:
+    UpdatedBook:
+      required:
+      - isbn13
+      - updated_at
+      properties:
+        isbn13:
+          description: ISBN-13
+          type: string
+        updated_at:
+          description: Timestamp when the book was last updated
+          type: string
+          format: date-time
+      type: object
+    UpdatedBooksResponse:
+      required:
+      - data
+      - page
+      - page_size
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdatedBook'
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header
