@@ -1,7 +1,20 @@
 aid: isbndb
 name: ISBNdb
 description: ISBNdb is the world's largest book database REST API providing access to metadata for over 110 million books and publications. Search by ISBN (ISBN-10 or ISBN-13), title, author, publisher, or subject to retrieve up to 19 data points per book including cover images, publication dates, descriptions, and real-time pricing. The API supports bulk lookups of up to 1,000 ISBNs per request on eligible plans.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/isbndb.png
 url: https://raw.githubusercontent.com/api-evangelist/isbndb/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -14,29 +27,118 @@ tags:
   - Library
   - Bibliography
 apis:
-  - aid: isbndb:isbndb-api
-    name: ISBNdb API
-    description: RESTful API for searching and retrieving book metadata by ISBN, title, author, publisher, and subject from the world's largest book database with 110M+ entries.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://isbndb.com/api-documentation
-    baseURL: https://api2.isbndb.com
-    tags:
-      - Books
-      - ISBN
-      - Publishing
-      - Metadata
-      - Search
-    properties:
-      - type: Documentation
-        url: https://isbndb.com/api-documentation
-      - type: OpenAPI
-        url: https://api2.isbndb.com/doc.json
-      - type: Pricing
-        url: https://isbndb.com/isbn-database
-    contact:
-      - FN: ISBNdb Support
-        url: https://isbndb.com/faq
-        email: ''
+- aid: isbndb:isbndb-author-api
+  name: ISBNdb Author API
+  description: Author endpoints
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Author
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-author-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-books-api
+  name: ISBNdb Books API
+  description: Book endpoints
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Books
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-books-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-feed-api
+  name: ISBNdb Feed API
+  description: Feed endpoints for incremental sync
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Feed
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-feed-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-key-api
+  name: ISBNdb Key API
+  description: API key management
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Key
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-key-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-publisher-api
+  name: ISBNdb Publisher API
+  description: Publisher endpoints
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Publisher
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-publisher-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-search-api
+  name: ISBNdb Search API
+  description: Legacy search endpoints (deprecated)
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-search-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-stats-api
+  name: ISBNdb Stats API
+  description: Database statistics
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-stats-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
+- aid: isbndb:isbndb-subject-api
+  name: ISBNdb Subject API
+  description: Subject endpoints
+  humanURL: https://isbndb.com/api-documentation
+  baseURL: https://api2.isbndb.com
+  tags:
+  - Subject
+  properties:
+  - type: OpenAPI
+    url: openapi/isbndb-subject-api-openapi.yml
+  - type: Documentation
+    url: https://isbndb.com/api-documentation
+  - type: Pricing
+    url: https://isbndb.com/isbn-database
 common:
   - type: AgenticAccess
     url: agentic-access/isbndb-agentic-access.yml
