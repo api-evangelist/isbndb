@@ -1,0 +1,28 @@
+{
+  "provider": "isbndb",
+  "sources": [
+    "isbndb-author-api-openapi.yml",
+    "isbndb-books-api-openapi.yml",
+    "isbndb-feed-api-openapi.yml",
+    "isbndb-key-api-openapi.yml",
+    "isbndb-publisher-api-openapi.yml",
+    "isbndb-search-api-openapi.yml",
+    "isbndb-stats-api-openapi.yml",
+    "isbndb-subject-api-openapi.yml"
+  ],
+  "outputs": [
+    "isbndb-author-api-openapi.yml",
+    "isbndb-books-api-openapi.yml",
+    "isbndb-feed-api-openapi.yml",
+    "isbndb-key-api-openapi.yml",
+    "isbndb-publisher-api-openapi.yml",
+    "isbndb-search-api-openapi.yml",
+    "isbndb-stats-api-openapi.yml",
+    "isbndb-subject-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
