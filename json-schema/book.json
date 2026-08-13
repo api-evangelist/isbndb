@@ -4,7 +4,11 @@
   "title": "Book",
   "description": "A book record returned by the ISBNdb API, containing bibliographic metadata for a single publication.",
   "type": "object",
-  "required": ["title", "isbn13", "date_published"],
+  "required": [
+    "title",
+    "isbn13",
+    "date_published"
+  ],
   "properties": {
     "title": {
       "type": "string",
@@ -26,25 +30,32 @@
       "pattern": "^\\d{13}$"
     },
     "isbn10": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "ISBN-10 identifier, if available",
       "pattern": "^[0-9Xx]{10}$"
     },
-    "dewey_decimal": {
-      "type": ["array", "null"],
-      "description": "Dewey Decimal Classification numbers assigned to the book",
-      "items": {"type": "string"}
-    },
     "binding": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Book binding type (e.g. Hardcover, Paperback, eBook)"
     },
     "publisher": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Name of the publisher"
     },
     "language": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Language of the book (ISO 639-1 code or full name)"
     },
     "date_published": {
@@ -53,16 +64,25 @@
       "example": "2023-10-26"
     },
     "edition": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Edition of the book (e.g. 3rd, Revised)"
     },
     "pages": {
-      "type": ["integer", "null"],
+      "type": [
+        "integer",
+        "null"
+      ],
       "description": "Number of pages in the book",
       "minimum": 1
     },
     "dimensions": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Physical dimensions as a formatted string (deprecated)",
       "deprecated": true
     },
@@ -70,58 +90,100 @@
       "description": "Structured physical dimensions (height, width, weight, etc.)",
       "nullable": true,
       "oneOf": [
-        {"type": "array"},
-        {"type": "object"}
+        {
+          "type": "array"
+        },
+        {
+          "type": "object"
+        }
       ]
     },
     "overview": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Brief overview or description of the book (deprecated)",
       "deprecated": true
     },
     "image": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Cover image URL. Maximum height is 500px.",
       "format": "uri"
     },
     "image_original": {
-      "type": ["string", "null"],
-      "description": "Original cover image URL. Temporary — expires 2 hours after API response.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Original cover image URL. Temporary \u2014 expires 2 hours after API response.",
       "format": "uri"
     },
     "msrp": {
-      "type": ["number", "null"],
+      "type": [
+        "number",
+        "null"
+      ],
       "description": "Manufacturer's suggested retail price",
       "minimum": 0
     },
     "excerpt": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Short excerpt from the book"
     },
     "synopsis": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Full synopsis or summary of the book"
     },
     "authors": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "List of authors of the book",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "subjects": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "List of subjects or categories the book belongs to",
-      "items": {"type": "string"}
+      "items": {
+        "type": "string"
+      }
     },
     "reviews": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "User or editorial reviews of the book (deprecated)",
-      "items": {"type": "string"},
+      "items": {
+        "type": "string"
+      },
       "deprecated": true
     },
     "prices": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "Available prices from various merchants",
-      "items": {"$ref": "#/definitions/Price"}
+      "items": {
+        "$ref": "#/definitions/Price"
+      }
     },
     "related": {
       "description": "Related books (deprecated)",
@@ -129,23 +191,44 @@
       "deprecated": true
     },
     "other_isbns": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "Other ISBNs associated with this book (different formats or editions)",
-      "items": {"$ref": "#/definitions/RelatedIsbn"}
+      "items": {
+        "$ref": "#/definitions/RelatedIsbn"
+      }
     }
   },
   "definitions": {
     "Point": {
       "type": "object",
-      "required": ["x", "y"],
+      "required": [
+        "x",
+        "y"
+      ],
       "properties": {
-        "x": {"type": "string"},
-        "y": {"type": "string"}
+        "x": {
+          "type": "string"
+        },
+        "y": {
+          "type": "string"
+        }
       }
     },
     "Price": {
       "type": "object",
-      "required": ["condition", "merchant", "merchant_logo", "merchant_logo_offset", "shipping", "price", "total", "link"],
+      "required": [
+        "condition",
+        "merchant",
+        "merchant_logo",
+        "merchant_logo_offset",
+        "shipping",
+        "price",
+        "total",
+        "link"
+      ],
       "properties": {
         "condition": {
           "type": "string",
@@ -184,7 +267,10 @@
     },
     "RelatedIsbn": {
       "type": "object",
-      "required": ["isbn", "binding"],
+      "required": [
+        "isbn",
+        "binding"
+      ],
       "properties": {
         "isbn": {
           "type": "string",

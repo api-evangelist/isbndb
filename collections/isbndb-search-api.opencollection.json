@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ISBNdb API v2 Search API",
+    "version": "2.7.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search all ISBNDB databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/search/authors",
+            "params": [
+              {
+                "name": "text",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "\n*Deprecated* use /authors/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
+        },
+        {
+          "info": {
+            "name": "Search all ISBNDB databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/search/books",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              },
+              {
+                "name": "isbn",
+                "value": "",
+                "type": "query",
+                "description": "an ISBN 10 in the Books database"
+              },
+              {
+                "name": "isbn13",
+                "value": "",
+                "type": "query",
+                "description": "an ISBN 13 in the Books database"
+              },
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "The name of an author in the Author's database"
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "A string to search for determinated index database"
+              },
+              {
+                "name": "subject",
+                "value": "",
+                "type": "query",
+                "description": "A subject in the Subject's database"
+              },
+              {
+                "name": "publisher",
+                "value": "",
+                "type": "query",
+                "description": "The name of a publisher in the Publisher's database"
+              },
+              {
+                "name": "publishedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+              },
+              {
+                "name": "publishedTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Uses a determined index and query string to search in any of the ISBNDB's databases"
+        },
+        {
+          "info": {
+            "name": "Search all ISBNDB databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/search/publishers",
+            "params": [
+              {
+                "name": "text",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
+        },
+        {
+          "info": {
+            "name": "Search all ISBNDB databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/search/subjects",
+            "params": [
+              {
+                "name": "text",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

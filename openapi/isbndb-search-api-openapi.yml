@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: ISBNdb API v2 Author Search API
+  title: ISBNdb API v2 Search API
   description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
   version: 2.7.0
 servers:
@@ -8,19 +8,15 @@ servers:
   description: API Endpoint
 tags:
 - name: Search
-  description: Legacy search endpoints (deprecated)
+  description: Search
 paths:
   /search/authors:
     get:
       tags:
       - Search
-      summary: Search authors (deprecated)
-      description: '*Deprecated* use /authors/{query}
-
-
-        Uses a determined index and query string to search in any of the ISBNDB''s databases'
+      summary: Search all ISBNDB databases
+      description: "\n*Deprecated* use /authors/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
       operationId: get_app_api_search_searchauthors__invoke
-      deprecated: true
       parameters:
       - name: text
         in: query
@@ -29,17 +25,23 @@ paths:
           type: string
       - name: page
         in: query
+        description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
+          type:
+          - integer
+          - 'null'
           default: 1
       - name: pageSize
         in: query
+        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: How many items should be returned per page, maximum of 1,000
+          type:
+          - integer
+          - 'null'
           default: 20
       responses:
         '200':
@@ -48,93 +50,118 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchBaseResponse'
+      deprecated: true
       security:
       - ApiKeyAuth: []
   /search/books:
     get:
       tags:
       - Search
-      summary: Search books
+      summary: Search all ISBNDB databases
       description: Uses a determined index and query string to search in any of the ISBNDB's databases
       operationId: get_app_api_search_searchbooks__invoke
       parameters:
       - name: page
         in: query
+        description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
+          type:
+          - integer
+          - 'null'
           default: 1
       - name: pageSize
         in: query
+        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: How many items should be returned per page, maximum of 1,000
+          type:
+          - integer
+          - 'null'
           default: 20
       - name: isbn
         in: query
         description: an ISBN 10 in the Books database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: an ISBN 10 in the Books database
+          type:
+          - string
+          - 'null'
           maxLength: 20
       - name: isbn13
         in: query
         description: an ISBN 13 in the Books database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: an ISBN 13 in the Books database
+          type:
+          - string
+          - 'null'
           maxLength: 20
       - name: author
         in: query
         description: The name of an author in the Author's database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: The name of an author in the Author's database
+          type:
+          - string
+          - 'null'
           maxLength: 150
       - name: text
         in: query
         description: A string to search for determinated index database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: A string to search for determinated index database
+          type:
+          - string
+          - 'null'
           maxLength: 150
       - name: subject
         in: query
         description: A subject in the Subject's database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: A subject in the Subject's database
+          type:
+          - string
+          - 'null'
           maxLength: 150
       - name: publisher
         in: query
         description: The name of a publisher in the Publisher's database
         required: false
         schema:
-          type: string
-          nullable: true
+          description: The name of a publisher in the Publisher's database
+          type:
+          - string
+          - 'null'
           maxLength: 150
       - name: publishedFrom
         in: query
+        description: 'Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
         required: false
         schema:
-          type: string
+          description: 'Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
+          type:
+          - string
+          - 'null'
           pattern: .*(^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$).*
-          nullable: true
           default: null
       - name: publishedTo
         in: query
+        description: 'Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
         required: false
         schema:
-          type: string
+          description: 'Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
+          type:
+          - string
+          - 'null'
           pattern: .*(^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$).*
-          nullable: true
           default: null
       responses:
         '200':
@@ -149,13 +176,9 @@ paths:
     get:
       tags:
       - Search
-      summary: Search publishers (deprecated)
-      description: '*Deprecated* use /publishers/{query}
-
-
-        Uses a determined index and query string to search in any of the ISBNDB''s databases'
+      summary: Search all ISBNDB databases
+      description: "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
       operationId: get_app_api_search_searchpublishers__invoke
-      deprecated: true
       parameters:
       - name: text
         in: query
@@ -164,17 +187,23 @@ paths:
           type: string
       - name: page
         in: query
+        description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
+          type:
+          - integer
+          - 'null'
           default: 1
       - name: pageSize
         in: query
+        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: How many items should be returned per page, maximum of 1,000
+          type:
+          - integer
+          - 'null'
           default: 20
       responses:
         '200':
@@ -183,19 +212,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchBaseResponse'
+      deprecated: true
       security:
       - ApiKeyAuth: []
   /search/subjects:
     get:
       tags:
       - Search
-      summary: Search subjects (deprecated)
-      description: '*Deprecated* use /subjects/{query}
-
-
-        Uses a determined index and query string to search in any of the ISBNDB''s databases'
+      summary: Search all ISBNDB databases
+      description: "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases"
       operationId: get_app_api_search_searchsubjects__invoke
-      deprecated: true
       parameters:
       - name: text
         in: query
@@ -204,17 +230,23 @@ paths:
           type: string
       - name: page
         in: query
+        description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
+          type:
+          - integer
+          - 'null'
           default: 1
       - name: pageSize
         in: query
+        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          type: integer
-          nullable: true
+          description: How many items should be returned per page, maximum of 1,000
+          type:
+          - integer
+          - 'null'
           default: 20
       responses:
         '200':
@@ -223,21 +255,185 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchBaseResponse'
+      deprecated: true
       security:
       - ApiKeyAuth: []
 components:
   schemas:
-    RelatedIsbn:
+    SearchBookResponse:
       required:
-      - isbn
-      - binding
+      - data
+      - total
+      - page
+      - page_size
       properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
+    Book:
+      required:
+      - title
+      - title_long
+      - isbn
+      - isbn13
+      - date_published
+      properties:
+        title:
+          description: Title
+          type: string
+        title_long:
+          description: Title
+          type: string
+          deprecated: true
         isbn:
-          description: ISBN-13 of the related edition
+          description: ISBN-13
           type: string
+          deprecated: true
+        isbn13:
+          description: ISBN-13
+          type: string
+        isbn10:
+          description: Book ISBN-10, if available
+          type:
+          - string
+          - 'null'
         binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          description: Book binding type (e.g. Hardcover, Paperback, eBook)
+          type:
+          - string
+          - 'null'
+        publisher:
+          description: Name of the publisher
+          type:
+          - string
+          - 'null'
+        language:
+          description: Language of the book (ISO 639-1 code or full name)
+          type:
+          - string
+          - 'null'
+        date_published:
+          description: A publication date in YYYY-MM-DD, YYYY-MM, or YYYY format.
           type: string
+          format: date
+          example: '2023-10-26'
+        edition:
+          description: Edition of the book (e.g. 3rd, Revised)
+          type:
+          - string
+          - 'null'
+        pages:
+          description: Number of pages in the book
+          type:
+          - integer
+          - 'null'
+        dimensions:
+          description: Physical dimensions of the book as a formatted string
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        dimensions_structured:
+          description: Structured physical dimensions of the book (height, width, weight, etc.)
+          oneOf:
+          - type: array
+            items: {}
+          - type: object
+            additionalProperties: {}
+        overview:
+          description: Brief overview or description of the book
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        image:
+          description: Image link. Maximum height is 500px.
+          type:
+          - string
+          - 'null'
+        image_original:
+          description: 'Original image link. Note: This URL is temporary and will expire 2 hours after the API response is generated.'
+          type:
+          - string
+          - 'null'
+        msrp:
+          description: Manufacturer's suggested retail price
+          type:
+          - number
+          - 'null'
+          format: float
+        excerpt:
+          description: Short excerpt from the book
+          type:
+          - string
+          - 'null'
+        synopsis:
+          description: Full synopsis or summary of the book
+          type:
+          - string
+          - 'null'
+        authors:
+          description: List of authors of the book
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        subjects:
+          description: List of subjects or categories the book belongs to
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        reviews:
+          description: User or editorial reviews of the book
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          deprecated: true
+        prices:
+          description: Available prices from various merchants
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Price'
+        related:
+          description: Related books
+          deprecated: true
+          oneOf:
+          - type: array
+            items: {}
+          - type: object
+            additionalProperties: {}
+        other_isbns:
+          description: Other ISBNs associated with this book (e.g. different formats or editions)
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/RelatedIsbn'
       type: object
     SearchBaseResponse:
       required:
@@ -259,6 +455,18 @@ components:
           type: integer
         page_size:
           type: integer
+      type: object
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
       type: object
     Price:
       required:
@@ -293,175 +501,6 @@ components:
           type: string
         link:
           description: URL to purchase the book from this merchant
-          type: string
-      type: object
-    SearchBookResponse:
-      required:
-      - data
-      - total
-      - page
-      - page_size
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
-      type: object
-    Book:
-      required:
-      - title
-      - title_long
-      - isbn
-      - isbn13
-      - date_published
-      properties:
-        title:
-          description: Title
-          type: string
-        title_long:
-          description: Long title (deprecated)
-          type: string
-          deprecated: true
-        isbn:
-          description: ISBN-13 (deprecated, use isbn13)
-          type: string
-          deprecated: true
-        isbn13:
-          description: ISBN-13
-          type: string
-        isbn10:
-          description: Book ISBN-10, if available
-          type: string
-          nullable: true
-        dewey_decimal:
-          description: Dewey Decimal Classification numbers assigned to the book
-          type: array
-          items:
-            type: string
-          nullable: true
-        binding:
-          description: Book binding type (e.g. Hardcover, Paperback, eBook)
-          type: string
-          nullable: true
-        publisher:
-          description: Name of the publisher
-          type: string
-          nullable: true
-        language:
-          description: Language of the book (ISO 639-1 code or full name)
-          type: string
-          nullable: true
-        date_published:
-          description: A publication date in YYYY-MM-DD, YYYY-MM, or YYYY format.
-          type: string
-          format: date
-          example: '2023-10-26'
-        edition:
-          description: Edition of the book (e.g. 3rd, Revised)
-          type: string
-          nullable: true
-        pages:
-          description: Number of pages in the book
-          type: integer
-          nullable: true
-        dimensions:
-          description: Physical dimensions of the book as a formatted string (deprecated)
-          type: string
-          nullable: true
-          deprecated: true
-        dimensions_structured:
-          description: Structured physical dimensions of the book
-          nullable: true
-          oneOf:
-          - type: array
-            items:
-              nullable: true
-          - type: object
-            additionalProperties:
-              nullable: true
-        overview:
-          description: Brief overview or description of the book (deprecated)
-          type: string
-          nullable: true
-          deprecated: true
-        image:
-          description: Image link. Maximum height is 500px.
-          type: string
-          nullable: true
-        image_original:
-          description: 'Original image link. Note: This URL is temporary and will expire 2 hours after the API response is generated.'
-          type: string
-          nullable: true
-        msrp:
-          description: Manufacturer's suggested retail price
-          type: number
-          format: float
-          nullable: true
-        excerpt:
-          description: Short excerpt from the book
-          type: string
-          nullable: true
-        synopsis:
-          description: Full synopsis or summary of the book
-          type: string
-          nullable: true
-        authors:
-          description: List of authors of the book
-          type: array
-          items:
-            type: string
-          nullable: true
-        subjects:
-          description: List of subjects or categories the book belongs to
-          type: array
-          items:
-            type: string
-          nullable: true
-        reviews:
-          description: User or editorial reviews of the book (deprecated)
-          type: array
-          items:
-            type: string
-          nullable: true
-          deprecated: true
-        prices:
-          description: Available prices from various merchants
-          type: array
-          items:
-            $ref: '#/components/schemas/Price'
-          nullable: true
-        related:
-          description: Related books (deprecated)
-          nullable: true
-          deprecated: true
-          oneOf:
-          - type: array
-            items:
-              nullable: true
-          - type: object
-            additionalProperties:
-              nullable: true
-        other_isbns:
-          description: Other ISBNs associated with this book (e.g. different formats or editions)
-          type: array
-          items:
-            $ref: '#/components/schemas/RelatedIsbn'
-          nullable: true
-      type: object
-    Point:
-      required:
-      - x
-      - y
-      properties:
-        x:
-          type: string
-        y:
           type: string
       type: object
   securitySchemes:

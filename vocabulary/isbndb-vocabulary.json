@@ -7,7 +7,7 @@
     "terms": [
       {
         "term": "ISBN",
-        "definition": "International Standard Book Number — a numeric commercial book identifier. ISBNdb supports both ISBN-10 and ISBN-13 formats.",
+        "definition": "International Standard Book Number \u2014 a numeric commercial book identifier. ISBNdb supports both ISBN-10 and ISBN-13 formats.",
         "type": "identifier"
       },
       {
@@ -23,14 +23,8 @@
         "field": "isbn13"
       },
       {
-        "term": "Dewey Decimal",
-        "definition": "The Dewey Decimal Classification system number(s) assigned to a book for library cataloging purposes.",
-        "type": "classification",
-        "field": "dewey_decimal"
-      },
-      {
         "term": "binding",
-        "definition": "The physical form of a book's cover and binding — common values include Hardcover, Paperback, eBook, and Spiral-bound.",
+        "definition": "The physical form of a book's cover and binding \u2014 common values include Hardcover, Paperback, eBook, and Spiral-bound.",
         "type": "attribute",
         "field": "binding"
       },
@@ -48,7 +42,7 @@
       },
       {
         "term": "msrp",
-        "definition": "Manufacturer's Suggested Retail Price — the recommended price set by the publisher.",
+        "definition": "Manufacturer's Suggested Retail Price \u2014 the recommended price set by the publisher.",
         "type": "attribute",
         "field": "msrp"
       },
@@ -111,7 +105,12 @@
         "definition": "Search scope constraint for book queries. Options: title, author, date_published, subjects. Empty value searches all columns.",
         "type": "filter",
         "field": "column",
-        "allowedValues": ["title", "author", "date_published", "subjects"]
+        "allowedValues": [
+          "title",
+          "author",
+          "date_published",
+          "subjects"
+        ]
       },
       {
         "term": "shouldMatchAll",

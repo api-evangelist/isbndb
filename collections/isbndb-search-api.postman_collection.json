@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "7d0f93a2-1c8d-4912-b5e2-956c283cc3aa",
+      "name": "Search",
+      "description": {
+        "content": "Search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfeaf022-337f-4feb-9887-f23b72cfd768",
+          "name": "Search all ISBNDB databases",
+          "request": {
+            "name": "Search all ISBNDB databases",
+            "description": {
+              "content": "\n*Deprecated* use /authors/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "authors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18100d82-10eb-4da0-a627-017d64ff1dc3",
+              "name": "The query string found results in the author's database",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "authors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"data\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 1408,\n  \"page\": 5401,\n  \"page_size\": 9813\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "333b0d7a-696c-4423-84aa-cb70801fa58c",
+          "name": "Search all ISBNDB databases",
+          "request": {
+            "name": "Search all ISBNDB databases",
+            "description": {
+              "content": "Uses a determined index and query string to search in any of the ISBNDB's databases",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "books"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                },
+                {
+                  "disabled": false,
+                  "key": "isbn",
+                  "value": "<string,null>",
+                  "description": "an ISBN 10 in the Books database"
+                },
+                {
+                  "disabled": false,
+                  "key": "isbn13",
+                  "value": "<string,null>",
+                  "description": "an ISBN 13 in the Books database"
+                },
+                {
+                  "disabled": false,
+                  "key": "author",
+                  "value": "<string,null>",
+                  "description": "The name of an author in the Author's database"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string,null>",
+                  "description": "A string to search for determinated index database"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject",
+                  "value": "<string,null>",
+                  "description": "A subject in the Subject's database"
+                },
+                {
+                  "disabled": false,
+                  "key": "publisher",
+                  "value": "<string,null>",
+                  "description": "The name of a publisher in the Publisher's database"
+                },
+                {
+                  "disabled": false,
+                  "key": "publishedFrom",
+                  "value": "",
+                  "description": "Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "publishedTo",
+                  "value": "",
+                  "description": "Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a1ffd11b-d2d9-4ed0-b4c9-3ee7b4d8b5f3",
+              "name": "The query string found results in the books's database",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "books"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "isbn",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "isbn13",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "author",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "publisher",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "publishedFrom",
+                      "value": ""
+                    },
+                    {
+                      "key": "publishedTo",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": null,\n      \"binding\": null,\n      \"publisher\": null,\n      \"language\": \"string\",\n      \"edition\": null,\n      \"pages\": null,\n      \"dimensions\": null,\n      \"overview\": null,\n      \"image\": null,\n      \"image_original\": null,\n      \"msrp\": 8832.430587189321,\n      \"excerpt\": null,\n      \"synopsis\": null,\n      \"authors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subjects\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reviews\": null,\n      \"prices\": [\n        \"\",\n        \"\"\n      ],\n      \"other_isbns\": null\n    },\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": null,\n      \"binding\": \"string\",\n      \"publisher\": null,\n      \"language\": \"string\",\n      \"edition\": \"string\",\n      \"pages\": null,\n      \"dimensions\": \"string\",\n      \"overview\": \"string\",\n      \"image\": null,\n      \"image_original\": \"string\",\n      \"msrp\": 1187.5421424906817,\n      \"excerpt\": null,\n      \"synopsis\": null,\n      \"authors\": null,\n      \"subjects\": null,\n      \"reviews\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prices\": null,\n      \"other_isbns\": null\n    }\n  ],\n  \"total\": 4810,\n  \"page\": 8435,\n  \"page_size\": 860\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ead2df4d-edd9-47a3-a99f-f8a046a421d6",
+          "name": "Search all ISBNDB databases",
+          "request": {
+            "name": "Search all ISBNDB databases",
+            "description": {
+              "content": "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "publishers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0c1a8d0-1905-40c2-abb4-9c997d57f0c8",
+              "name": "The query string found results in the publisher's database",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"data\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 4870,\n  \"page\": 9052,\n  \"page_size\": 3580\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7c67453-1d7e-4b9c-a133-8fccfe004a2d",
+          "name": "Search all ISBNDB databases",
+          "request": {
+            "name": "Search all ISBNDB databases",
+            "description": {
+              "content": "\n*Deprecated* use /publishers/{query}\n        \nUses a determined index and query string to search in any of the ISBNDB's databases",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "subjects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c8ace272-0c23-4de7-bd67-fbc2e02e291a",
+              "name": "The query string found results in the subjects's database",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "subjects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"data\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 4870,\n  \"page\": 9052,\n  \"page_size\": 3580\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.isbndb.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4e88bb82-368e-4f99-a98e-8495b9c0271a",
+    "name": "ISBNdb API v2 Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ISBNdb API v2 Feed API",
+    "version": "2.7.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recently updated book ISBNs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/feeds/books/updates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              },
+              {
+                "name": "lastUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last updated date (Format: YYYY-MM-DD)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieves a list of book ISBNs that have been added or modified. This endpoint is designed for frequent incremental synchronization.\n\n**Important Notes:**\n* **Plan limits:** Available exclusively for **Premium** plans and higher.\n* **History limit:** The update history is strictly limited to the last **7 days**.\n* **Quota:** Calling this endpoint does not count towards your daily API limits.\n* **Pagination:** The response does not include a total field. To fetch all updates, continue requesting "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

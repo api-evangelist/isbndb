@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "5c069778-a554-4b81-8631-4e91f1b89715",
+      "name": "Author",
+      "description": {
+        "content": "Author",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8668c38c-4d3b-4420-ac8a-aedfd0946c02",
+          "name": "Gets author details",
+          "request": {
+            "name": "Gets author details",
+            "description": {
+              "content": "Returns the name and a list of books by the author.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "author",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "",
+                  "description": "Language code to filter books by language (e.g., `eng` for English, `fra` for French, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                },
+                {
+                  "disabled": false,
+                  "key": "publishedFrom",
+                  "value": "",
+                  "description": "Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "publishedTo",
+                  "value": "",
+                  "description": "Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) The author name. **Max length: 150 characters**."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6dfb853-9283-4046-b330-ab83e745c2c0",
+              "name": "Returns the book details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "author",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": ""
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "publishedFrom",
+                      "value": ""
+                    },
+                    {
+                      "key": "publishedTo",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) The author name. **Max length: 150 characters**."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"author\": \"string\",\n  \"name\": \"string\",\n  \"books\": [\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": \"string\",\n      \"binding\": \"string\",\n      \"publisher\": \"string\",\n      \"language\": null,\n      \"edition\": null,\n      \"pages\": null,\n      \"dimensions\": null,\n      \"overview\": null,\n      \"image\": null,\n      \"image_original\": null,\n      \"msrp\": null,\n      \"excerpt\": \"string\",\n      \"synopsis\": \"string\",\n      \"authors\": null,\n      \"subjects\": null,\n      \"reviews\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prices\": null,\n      \"other_isbns\": null\n    },\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": \"string\",\n      \"binding\": null,\n      \"publisher\": \"string\",\n      \"language\": \"string\",\n      \"edition\": \"string\",\n      \"pages\": 9197,\n      \"dimensions\": null,\n      \"overview\": null,\n      \"image\": null,\n      \"image_original\": null,\n      \"msrp\": 2827.0539789628456,\n      \"excerpt\": null,\n      \"synopsis\": null,\n      \"authors\": null,\n      \"subjects\": null,\n      \"reviews\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prices\": [\n        \"\",\n        \"\"\n      ],\n      \"other_isbns\": [\n        \"\",\n        \"\"\n      ]\n    }\n  ],\n  \"total\": 3525,\n  \"page\": 3874,\n  \"page_size\": 3533\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4b353f0-357d-4f46-810a-b61ef4bc70e1",
+          "name": "Search authors",
+          "request": {
+            "name": "Search authors",
+            "description": {
+              "content": "This returns a list of authors whos name matches the given query",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authors",
+                ":query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "query",
+                  "description": "(Required) The search query string. **Max length: 150 characters**."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5bdf0540-1e4c-46c5-a561-66825a514587",
+              "name": "The query string found results in the author's database",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authors",
+                    ":query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "query",
+                      "description": "(Required) The search query string. **Max length: 150 characters**."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"authors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 1843,\n  \"page\": 2205,\n  \"page_size\": 8050\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.isbndb.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b0536391-a3fa-4847-859d-de9e10ebc84c",
+    "name": "ISBNdb API v2 Author API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n",
+      "type": "text/plain"
+    }
+  }
+}

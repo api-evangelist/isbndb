@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: ISBNdb API v2 Author Key API
+  title: ISBNdb API v2 Key API
   description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
   version: 2.7.0
 servers:
@@ -8,14 +8,9 @@ servers:
   description: API Endpoint
 tags:
 - name: Key
-  description: API key management
 paths:
   /key:
     get:
-      tags:
-      - Key
-      summary: Get API key details
-      description: Returns details about the current API key including plan limits.
       operationId: get_app_api_key__invoke
       responses:
         '200':
@@ -26,8 +21,23 @@ paths:
                 $ref: '#/components/schemas/KeyResponse'
       security:
       - ApiKeyAuth: []
+      tags:
+      - Key
 components:
   schemas:
+    KeyResponse:
+      required:
+      - api_host
+      - plan_limit
+      - plan_name
+      properties:
+        api_host:
+          type: string
+        plan_limit:
+          $ref: '#/components/schemas/PlanLimit'
+        plan_name:
+          type: string
+      type: object
     PlanLimit:
       required:
       - total
@@ -40,16 +50,6 @@ components:
           type: integer
         left:
           type: integer
-      type: object
-    KeyResponse:
-      required:
-      - api_host
-      - plan_limit
-      properties:
-        api_host:
-          type: string
-        plan_limit:
-          $ref: '#/components/schemas/PlanLimit'
       type: object
   securitySchemes:
     ApiKeyAuth:

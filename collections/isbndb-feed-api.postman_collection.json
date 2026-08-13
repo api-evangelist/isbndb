@@ -1,0 +1,162 @@
+{
+  "item": [
+    {
+      "id": "a58d2a8a-a64c-4735-99ef-8c6fa2ab213b",
+      "name": "Feed",
+      "description": {
+        "content": "Feed",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2702a3b2-d902-4368-b135-4e2de2bc2c2a",
+          "name": "Get recently updated book ISBNs",
+          "request": {
+            "name": "Get recently updated book ISBNs",
+            "description": {
+              "content": "Retrieves a list of book ISBNs that have been added or modified. This endpoint is designed for frequent incremental synchronization.\n\n**Important Notes:**\n* **Plan limits:** Available exclusively for **Premium** plans and higher.\n* **History limit:** The update history is strictly limited to the last **7 days**.\n* **Quota:** Calling this endpoint does not count towards your daily API limits.\n* **Pagination:** The response does not include a total field. To fetch all updates, continue requesting subsequent pages (incrementing the page parameter) until the data array in the response is empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "feeds",
+                "books",
+                "updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The number of page to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100",
+                  "description": "How many items should be returned per page, maximum of 1,000"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastUpdated",
+                  "value": "",
+                  "description": "Filter by last updated date (Format: YYYY-MM-DD)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b1787f9f-389c-4f48-a29a-4b00fb3b27a0",
+              "name": "Returns a list of recently updated book ISBNs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "feeds",
+                    "books",
+                    "updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    },
+                    {
+                      "key": "lastUpdated",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"isbn13\": \"string\",\n      \"updated_at\": \"1987-01-19T22:57:18.564Z\"\n    },\n    {\n      \"isbn13\": \"string\",\n      \"updated_at\": \"1985-08-19T20:39:33.206Z\"\n    }\n  ],\n  \"page\": 1488,\n  \"page_size\": 1105\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api2.isbndb.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1aaa80b1-a9df-422e-bad3-07da88c98223",
+    "name": "ISBNdb API v2 Feed API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n",
+      "type": "text/plain"
+    }
+  }
+}

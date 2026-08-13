@@ -63,9 +63,6 @@
       "@id": "schema:price",
       "@type": "schema:Number"
     },
-    "dewey_decimal": {
-      "@id": "isbndb:deweyDecimal"
-    },
     "dimensions": {
       "@id": "schema:size"
     },

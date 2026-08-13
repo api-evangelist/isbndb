@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ISBNdb API v2 Author API",
+    "version": "2.7.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Author",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets author details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/author/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The author name. **Max length: 150 characters**."
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code to filter books by language (e.g., `eng` for English, `fra` for French, etc.)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              },
+              {
+                "name": "publishedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+              },
+              {
+                "name": "publishedTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the name and a list of books by the author."
+        },
+        {
+          "info": {
+            "name": "Search authors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api2.isbndb.com/authors/:query",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "path",
+                "description": "The search query string. **Max length: 150 characters**."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many items should be returned per page, maximum of 1,000"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This returns a list of authors whos name matches the given query"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
