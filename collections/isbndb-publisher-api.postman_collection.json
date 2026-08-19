@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "2b10c34a-069c-4d3f-a055-3e56afd5ec4c",
+      "id": "0641176a-6bf4-45da-8255-bcf298cbd795",
       "name": "Publisher",
       "description": {
         "content": "Publisher",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "4ab6c79e-a284-4946-97d8-9c5de5c25a3f",
+          "id": "646dc098-6e3f-4fd1-8ced-8b5668fb593a",
           "name": "Gets publisher details",
           "request": {
             "name": "Gets publisher details",
@@ -94,7 +94,7 @@
           },
           "response": [
             {
-              "id": "47e2da3c-9001-4c39-9332-61e60f9fc313",
+              "id": "db898291-2f08-4249-af6c-527db34774fa",
               "name": "Returns the book details",
               "originalRequest": {
                 "url": {
@@ -162,7 +162,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"name\": \"string\",\n  \"books\": [\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": \"string\",\n      \"binding\": \"string\",\n      \"publisher\": \"string\",\n      \"language\": null,\n      \"edition\": \"string\",\n      \"pages\": null,\n      \"dimensions\": null,\n      \"overview\": \"string\",\n      \"image\": \"string\",\n      \"image_original\": \"string\",\n      \"msrp\": 5029.001199438629,\n      \"excerpt\": \"string\",\n      \"synopsis\": \"string\",\n      \"authors\": null,\n      \"subjects\": null,\n      \"reviews\": null,\n      \"prices\": [\n        \"\",\n        \"\"\n      ],\n      \"other_isbns\": [\n        \"\",\n        \"\"\n      ]\n    },\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": \"string\",\n      \"binding\": \"string\",\n      \"publisher\": null,\n      \"language\": \"string\",\n      \"edition\": null,\n      \"pages\": 2208,\n      \"dimensions\": \"string\",\n      \"overview\": \"string\",\n      \"image\": \"string\",\n      \"image_original\": \"string\",\n      \"msrp\": null,\n      \"excerpt\": \"string\",\n      \"synopsis\": null,\n      \"authors\": null,\n      \"subjects\": null,\n      \"reviews\": null,\n      \"prices\": null,\n      \"other_isbns\": [\n        \"\",\n        \"\"\n      ]\n    }\n  ],\n  \"total\": 6283,\n  \"page\": 9897,\n  \"page_size\": 9603\n}",
+              "body": "{\n  \"name\": \"string\",\n  \"books\": [\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": \"string\",\n      \"binding\": \"string\",\n      \"publisher\": \"string\",\n      \"language\": \"string\",\n      \"edition\": \"string\",\n      \"pages\": null,\n      \"dimensions\": null,\n      \"overview\": null,\n      \"image\": null,\n      \"image_original\": null,\n      \"msrp\": 6200.977449542882,\n      \"excerpt\": null,\n      \"synopsis\": null,\n      \"authors\": null,\n      \"subjects\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reviews\": null,\n      \"prices\": [\n        \"\",\n        \"\"\n      ],\n      \"other_isbns\": null\n    },\n    {\n      \"title\": \"string\",\n      \"title_long\": \"string\",\n      \"isbn\": \"string\",\n      \"isbn13\": \"string\",\n      \"date_published\": \"2023-10-26\",\n      \"isbn10\": null,\n      \"binding\": \"string\",\n      \"publisher\": \"string\",\n      \"language\": null,\n      \"edition\": \"string\",\n      \"pages\": 9691,\n      \"dimensions\": \"string\",\n      \"overview\": \"string\",\n      \"image\": null,\n      \"image_original\": \"string\",\n      \"msrp\": 9373.997153220493,\n      \"excerpt\": \"string\",\n      \"synopsis\": \"string\",\n      \"authors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"subjects\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reviews\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prices\": [\n        \"\",\n        \"\"\n      ],\n      \"other_isbns\": [\n        \"\",\n        \"\"\n      ]\n    }\n  ],\n  \"total\": 8835,\n  \"page\": 2475,\n  \"page_size\": 7565\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -173,7 +173,7 @@
           }
         },
         {
-          "id": "339bade5-0290-4f93-8226-6c5cbd0d1eba",
+          "id": "b9177025-1a47-4c58-8694-14af537e8250",
           "name": "Search publishers",
           "request": {
             "name": "Search publishers",
@@ -240,7 +240,7 @@
           },
           "response": [
             {
-              "id": "8b624a9f-f8fe-42b6-b709-4b9d307ba6eb",
+              "id": "2e58aeae-6084-4934-8ece-c3b917bf1765",
               "name": "The query string found results in the author's database",
               "originalRequest": {
                 "url": {
@@ -296,7 +296,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"name\": \"string\",\n  \"publishers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 2854,\n  \"page\": 4668,\n  \"page_size\": 1796\n}",
+              "body": "{\n  \"name\": \"string\",\n  \"publishers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"total\": 3984,\n  \"page\": 30,\n  \"page_size\": 4584\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -319,7 +319,7 @@
     }
   ],
   "info": {
-    "_postman_id": "8596d725-29d4-4665-b538-c94a41ccea89",
+    "_postman_id": "ad13702b-2d83-44ed-85fe-c7f5fdf71cd2",
     "name": "ISBNdb API v2 Publisher API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "b253fb96-b3a9-46d9-9fcb-1a3298bc5f43",
+      "id": "87c9b34f-74de-426b-a2c2-fff576643b91",
       "name": "Stats",
       "description": {
         "content": "",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "eda81a55-8942-4c9c-9766-0fa1b262a5e1",
+          "id": "2caba4bd-42d2-42cd-be3c-ce11244cdac6",
           "name": "get app api stats getstats invoke",
           "request": {
             "name": "get app api stats getstats invoke",
@@ -51,7 +51,7 @@
           },
           "response": [
             {
-              "id": "d1a83645-1371-4462-916b-6b8aa780a97f",
+              "id": "e4a2ad24-8214-42d7-a068-c809629b561a",
               "name": "Returns books details",
               "originalRequest": {
                 "url": {
@@ -89,7 +89,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"books\": 3316,\n  \"authors\": 4537,\n  \"publishers\": 3766,\n  \"subjects\": 1455\n}",
+              "body": "{\n  \"books\": 271,\n  \"authors\": 806,\n  \"publishers\": 3233,\n  \"subjects\": 2364\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -112,7 +112,7 @@
     }
   ],
   "info": {
-    "_postman_id": "2ecad0e8-00ca-44fc-8b3f-5226b2a2dcbb",
+    "_postman_id": "bee6742b-64e5-4621-8bca-7022f119a5f2",
     "name": "ISBNdb API v2 Stats API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
