@@ -97,6 +97,8 @@ apis:
   humanURL: https://isbndb.com/api-documentation
   baseURL: https://api2.isbndb.com
   tags:
+  - Publishers
+  tags_raw:
   - Publisher
   properties:
   - type: OpenAPI
