@@ -3,21 +3,13 @@
   "feeds": [
     {
       "source": "https://isbndb.com/blog/feed/",
-      "feed_url": "https://isbndb.com/blog/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "error": "fetch_failed: HTTPError"
+      "error": "HTTPError"
     },
     {
       "source": "https://isbndb.com/isbn-database",
-      "feed_url": "https://isbndb.com/isbn-database",
-      "title": "",
-      "saved": 0,
-      "method": "none",
-      "error": "fetch_failed: HTTPError"
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-08-15T12:11:08Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "post_count": 13
 }
