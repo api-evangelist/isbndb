@@ -1,6 +1,18 @@
 aid: isbndb
 name: ISBNdb
 description: ISBNdb is the world's largest book database REST API providing access to metadata for over 110 million books and publications. Search by ISBN (ISBN-10 or ISBN-13), title, author, publisher, or subject to retrieve up to 19 data points per book including cover images, publication dates, descriptions, and real-time pricing. The API supports bulk lookups of up to 1,000 ISBNs per request on eligible plans.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
