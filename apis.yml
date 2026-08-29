@@ -170,6 +170,9 @@ apis:
   - type: Pricing
     url: https://isbndb.com/isbn-database
 common:
+  - type: CapabilityMap
+    url: capabilities/isbndb-capability-edges.yml
+    name: ISBNdb Business Capability Map
   - type: PostmanCollection
     url: https://www.postman.com/api-evangelist/isbndb/collection/86oo60r/isbndb-api
   - type: PostmanWorkspace
