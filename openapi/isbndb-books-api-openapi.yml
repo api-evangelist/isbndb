@@ -1,21 +1,41 @@
 openapi: 3.2.0
 info:
   title: ISBNdb API v2 Books API
-  description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
+  description: 'Definition of ISBNdb.com API v2.
+
+
+    ***Note: A 404 Not Found response for an ISBN lookup typically
+
+    indicates that the book information is not yet available in our database.
+
+    However, due to frequent updates, there is a high probability that the data will be
+
+    added shortly, often within a minute or up to 24 hours. We recommend trying your request
+
+    again after a while, as the information may soon become accessible***'
   version: 2.7.0
 servers:
 - url: https://api2.isbndb.com
   description: API Endpoint
 tags:
 - name: Books
-  description: Books
+  description: Book endpoints
 paths:
   /book/{isbn}:
     get:
       tags:
       - Books
-      summary: Get book details by isbn.
-      description: "Returns the book details. \n        \n**A 404 Not Found response for an ISBN lookup typically indicates that the book information is not yet available\nin our database. However, due to frequent updates, there is a high probability that the data will be added shortly,\noften within a minute or up to 24 hours. We recommend trying your request again after a while, as the information\nmay soon become accessible.**"
+      summary: Get book details by isbn
+      description: 'Returns the book details.
+
+
+        **A 404 Not Found response for an ISBN lookup typically indicates that the book information is not yet available
+
+        in our database. However, due to frequent updates, there is a high probability that the data will be added shortly,
+
+        often within a minute or up to 24 hours. We recommend trying your request again after a while, as the information
+
+        may soon become accessible.**'
       operationId: get_app_api_book_book__invoke
       parameters:
       - name: with_prices
@@ -50,7 +70,28 @@ paths:
       tags:
       - Books
       summary: Search books
-      description: "\nRetrieves a list of books matching the provided array of ISBNs. This endpoint is available on all plans and does not use pagination.\n\n**Request Limits per Plan:**\n* **Academic:** Up to 10 ISBNs per request.\n* **Basic:** Up to 100 ISBNs per request.\n* **Pro, Premium, and higher:** Up to 1,000 ISBNs per request.\n\n**Quota Usage (Important):** Each requested ISBN counts as a separate API call against your daily limit. For example, a single request containing 100 ISBNs will deduct 100 calls from your daily quota.\n\n**Response Behavior:**\n* The response will only include books that successfully match an ISBN in our database. \n* Any submitted ISBNs that are not found will be silently ignored and excluded from the response.\n* **Note:** Pricing information is not returned by this endpoint.\n"
+      description: 'Retrieves a list of books matching the provided array of ISBNs. This endpoint is available on all plans and does not use pagination.
+
+
+        **Request Limits per Plan:**
+
+        * **Academic:** Up to 10 ISBNs per request.
+
+        * **Basic:** Up to 100 ISBNs per request.
+
+        * **Pro, Premium, and higher:** Up to 1,000 ISBNs per request.
+
+
+        **Quota Usage (Important):** Each requested ISBN counts as a separate API call against your daily limit. For example, a single request containing 100 ISBNs will deduct 100 calls from your daily quota.
+
+
+        **Response Behavior:**
+
+        * The response will only include books that successfully match an ISBN in our database.
+
+        * Any submitted ISBNs that are not found will be silently ignored and excluded from the response.
+
+        * **Note:** Pricing information is not returned by this endpoint.'
       operationId: post_app_api_book_bookmultiple__invoke
       requestBody:
         required: true
@@ -87,7 +128,6 @@ paths:
         required: true
         schema:
           type: string
-          pattern: .+
       - name: year
         in: query
         description: Filter books by year of publication
@@ -133,17 +173,7 @@ paths:
           * `subjects` - Only searches books by the given subject, e.g. physics'
         required: false
         schema:
-          description: 'Search limited to this column:
-
-            * `` - Empty value search in every column
-
-            * `title` - Only searches in Books Title
-
-            * `author` - Only searches books by the given Author
-
-            * `date_published` - Only searches books in a given year, e.g. 1998
-
-            * `subjects` - Only searches books by the given subject, e.g. physics'
+          description: Search limited to this column
           type:
           - string
           - 'null'
@@ -158,7 +188,6 @@ paths:
         description: Language code to filter books by language (e.g., `eng` for English, `fra` for French, etc.)
         required: false
         schema:
-          description: Language code to filter books by language (e.g., `eng` for English, `fra` for French, etc.)
           type:
           - string
           - 'null'
@@ -166,30 +195,24 @@ paths:
           maxLength: 50
       - name: page
         in: query
-        description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
         required: false
         schema:
-          description: The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them
           type:
           - integer
           - 'null'
           default: 1
       - name: pageSize
         in: query
-        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          description: How many items should be returned per page, maximum of 1,000
           type:
           - integer
           - 'null'
           default: 20
       - name: publishedFrom
         in: query
-        description: 'Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
         required: false
         schema:
-          description: 'Filter books published on or after this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
           type:
           - string
           - 'null'
@@ -197,10 +220,8 @@ paths:
           default: null
       - name: publishedTo
         in: query
-        description: 'Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
         required: false
         schema:
-          description: 'Filter books published on or before this date. Accepted formats: `YYYY`, `YYYY-MM`, `YYYY-MM-DD`. Cannot be combined with the `year` parameter.'
           type:
           - string
           - 'null'
@@ -217,30 +238,6 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    GetBookResponse:
-      required:
-      - book
-      properties:
-        book:
-          $ref: '#/components/schemas/Book'
-      type: object
-    GetBooksMultipleResponse:
-      required:
-      - total
-      - data
-      properties:
-        total:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        requested:
-          type:
-          - integer
-          - 'null'
-          default: null
-      type: object
     Point:
       required:
       - x
@@ -251,22 +248,47 @@ components:
         y:
           type: string
       type: object
-    GetBooksMultipleRequest:
+    GetBookResponse:
       required:
-      - isbns
+      - book
       properties:
-        isbns:
-          oneOf:
-          - type: array
-            items:
-              oneOf:
-              - type: integer
-              - type: string
-          - type: object
-            additionalProperties:
-              oneOf:
-              - type: integer
-              - type: string
+        book:
+          $ref: '#/components/schemas/Book'
+      type: object
+    Price:
+      required:
+      - condition
+      - merchant
+      - merchant_logo
+      - merchant_logo_offset
+      - shipping
+      - price
+      - total
+      - link
+      properties:
+        condition:
+          description: Condition of the book offered at this price (e.g. new, used, digital)
+          type: string
+        merchant:
+          description: Name of the merchant offering this price
+          type: string
+        merchant_logo:
+          description: URL of the merchant logo image
+          type: string
+        merchant_logo_offset:
+          $ref: '#/components/schemas/Point'
+        shipping:
+          description: Shipping cost for this offer
+          type: string
+        price:
+          description: Item price excluding shipping
+          type: string
+        total:
+          description: Total price including shipping
+          type: string
+        link:
+          description: URL to purchase the book from this merchant
+          type: string
       type: object
     Book:
       required:
@@ -280,11 +302,11 @@ components:
           description: Title
           type: string
         title_long:
-          description: Title
+          description: Long title (deprecated)
           type: string
           deprecated: true
         isbn:
-          description: ISBN-13
+          description: ISBN-13 (deprecated, use isbn13)
           type: string
           deprecated: true
         isbn13:
@@ -295,6 +317,13 @@ components:
           type:
           - string
           - 'null'
+        dewey_decimal:
+          description: Dewey Decimal Classification numbers assigned to the book
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
         binding:
           description: Book binding type (e.g. Hardcover, Paperback, eBook)
           type:
@@ -326,20 +355,20 @@ components:
           - integer
           - 'null'
         dimensions:
-          description: Physical dimensions of the book as a formatted string
+          description: Physical dimensions of the book as a formatted string (deprecated)
           type:
           - string
           - 'null'
           deprecated: true
         dimensions_structured:
-          description: Structured physical dimensions of the book (height, width, weight, etc.)
+          description: Structured physical dimensions of the book
           oneOf:
           - type: array
             items: {}
           - type: object
             additionalProperties: {}
         overview:
-          description: Brief overview or description of the book
+          description: Brief overview or description of the book (deprecated)
           type:
           - string
           - 'null'
@@ -385,7 +414,7 @@ components:
           items:
             type: string
         reviews:
-          description: User or editorial reviews of the book
+          description: User or editorial reviews of the book (deprecated)
           type:
           - array
           - 'null'
@@ -400,7 +429,7 @@ components:
           items:
             $ref: '#/components/schemas/Price'
         related:
-          description: Related books
+          description: Related books (deprecated)
           deprecated: true
           oneOf:
           - type: array
@@ -426,6 +455,40 @@ components:
         error_message:
           type: string
       type: object
+    GetBooksMultipleRequest:
+      required:
+      - isbns
+      properties:
+        isbns:
+          oneOf:
+          - type: array
+            items:
+              oneOf:
+              - type: integer
+              - type: string
+          - type: object
+            additionalProperties:
+              oneOf:
+              - type: integer
+              - type: string
+      type: object
+    GetBooksMultipleResponse:
+      required:
+      - total
+      - data
+      properties:
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        requested:
+          type:
+          - integer
+          - 'null'
+          default: null
+      type: object
     RelatedIsbn:
       required:
       - isbn
@@ -436,41 +499,6 @@ components:
           type: string
         binding:
           description: Binding type of the related edition (e.g. Hardcover, Paperback)
-          type: string
-      type: object
-    Price:
-      required:
-      - condition
-      - merchant
-      - merchant_logo
-      - merchant_logo_offset
-      - shipping
-      - price
-      - total
-      - link
-      properties:
-        condition:
-          description: Condition of the book offered at this price (e.g. new, used, digital)
-          type: string
-        merchant:
-          description: Name of the merchant offering this price
-          type: string
-        merchant_logo:
-          description: URL of the merchant logo image
-          type: string
-        merchant_logo_offset:
-          $ref: '#/components/schemas/Point'
-        shipping:
-          description: Shipping cost for this offer
-          type: string
-        price:
-          description: Item price excluding shipping
-          type: string
-        total:
-          description: Total price including shipping
-          type: string
-        link:
-          description: URL to purchase the book from this merchant
           type: string
       type: object
   securitySchemes:

@@ -1,28 +1,42 @@
 openapi: 3.2.0
 info:
   title: ISBNdb API v2 Stats API
-  description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
+  description: 'Definition of ISBNdb.com API v2.
+
+
+    ***Note: A 404 Not Found response for an ISBN lookup typically
+
+    indicates that the book information is not yet available in our database.
+
+    However, due to frequent updates, there is a high probability that the data will be
+
+    added shortly, often within a minute or up to 24 hours. We recommend trying your request
+
+    again after a while, as the information may soon become accessible***'
   version: 2.7.0
 servers:
 - url: https://api2.isbndb.com
   description: API Endpoint
 tags:
 - name: Stats
+  description: Database statistics
 paths:
   /stats:
     get:
+      tags:
+      - Stats
+      summary: Get database statistics
+      description: Returns counts of books, authors, publishers, and subjects in the ISBNdb database.
       operationId: get_app_api_stats_getstats__invoke
       responses:
         '200':
-          description: Returns books details
+          description: Returns database statistics
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BaseStatsResponse'
       security:
       - ApiKeyAuth: []
-      tags:
-      - Stats
 components:
   schemas:
     BaseStatsResponse:

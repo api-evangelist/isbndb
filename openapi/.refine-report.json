@@ -1,7 +1,7 @@
 {
   "provider": "isbndb",
   "sources": [
-    "isbndb-openapi.json"
+    "_original/openapi-2026-06-13-as-archived.json"
   ],
   "outputs": [
     "isbndb-author-api-openapi.yml",
@@ -13,18 +13,24 @@
     "isbndb-stats-api-openapi.yml",
     "isbndb-subject-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/isbndb-openapi.json"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "isbndb-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "isbndb-openapi.json: tagged paths GET /key -> Key",
-    "isbndb-openapi.json: tagged paths GET /stats -> Stats",
-    "isbndb-openapi.json: declared missing tag: Key",
-    "isbndb-openapi.json: declared missing tag: Stats",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi-2026-06-13-as-archived.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "_original/openapi.json: archived document superseded by a larger archived document",
+    "isbndb-author-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-books-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-feed-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-publisher-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-stats-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "isbndb-subject-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

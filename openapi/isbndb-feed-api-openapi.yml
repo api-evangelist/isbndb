@@ -1,14 +1,25 @@
 openapi: 3.2.0
 info:
   title: ISBNdb API v2 Feed API
-  description: "Definition of ISBNdb.com API v2.\n\n***Note: A 404 Not Found response for an ISBN lookup typically\nindicates that the book information is not yet available in our database.\nHowever, due to frequent updates, there is a high probability that the data will be \nadded shortly, often within a minute or up to 24 hours. We recommend trying your request \nagain after a while, as the information may soon become accessible***\n"
+  description: 'Definition of ISBNdb.com API v2.
+
+
+    ***Note: A 404 Not Found response for an ISBN lookup typically
+
+    indicates that the book information is not yet available in our database.
+
+    However, due to frequent updates, there is a high probability that the data will be
+
+    added shortly, often within a minute or up to 24 hours. We recommend trying your request
+
+    again after a while, as the information may soon become accessible***'
   version: 2.7.0
 servers:
 - url: https://api2.isbndb.com
   description: API Endpoint
 tags:
 - name: Feed
-  description: Feed
+  description: Feed endpoints for incremental sync
 paths:
   /feeds/books/updates:
     get:
@@ -31,10 +42,8 @@ paths:
       parameters:
       - name: page
         in: query
-        description: The number of page to retrieve
         required: false
         schema:
-          description: The number of page to retrieve
           type:
           - integer
           - 'null'
@@ -42,10 +51,8 @@ paths:
           minimum: 1
       - name: pageSize
         in: query
-        description: How many items should be returned per page, maximum of 1,000
         required: false
         schema:
-          description: How many items should be returned per page, maximum of 1,000
           type:
           - integer
           - 'null'
@@ -57,7 +64,6 @@ paths:
         description: 'Filter by last updated date (Format: YYYY-MM-DD)'
         required: false
         schema:
-          description: 'Filter by last updated date (Format: YYYY-MM-DD)'
           type:
           - string
           - 'null'
@@ -73,19 +79,6 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    UpdatedBook:
-      required:
-      - isbn13
-      - updated_at
-      properties:
-        isbn13:
-          description: ISBN-13
-          type: string
-        updated_at:
-          description: Timestamp when the book was last updated
-          type: string
-          format: date-time
-      type: object
     UpdatedBooksResponse:
       required:
       - data
@@ -100,6 +93,19 @@ components:
           type: integer
         page_size:
           type: integer
+      type: object
+    UpdatedBook:
+      required:
+      - isbn13
+      - updated_at
+      properties:
+        isbn13:
+          description: ISBN-13
+          type: string
+        updated_at:
+          description: Timestamp when the book was last updated
+          type: string
+          format: date-time
       type: object
   securitySchemes:
     ApiKeyAuth:
