@@ -128,75 +128,6 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    Point:
-      required:
-      - x
-      - y
-      properties:
-        x:
-          type: string
-        y:
-          type: string
-      type: object
-    SubjectDetailsResponse:
-      required:
-      - subject
-      - name
-      - books
-      - total
-      - page
-      - page_size
-      properties:
-        subject:
-          type: string
-        name:
-          type: string
-        books:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
-      type: object
-    Price:
-      required:
-      - condition
-      - merchant
-      - merchant_logo
-      - merchant_logo_offset
-      - shipping
-      - price
-      - total
-      - link
-      properties:
-        condition:
-          description: Condition of the book offered at this price (e.g. new, used, digital)
-          type: string
-        merchant:
-          description: Name of the merchant offering this price
-          type: string
-        merchant_logo:
-          description: URL of the merchant logo image
-          type: string
-        merchant_logo_offset:
-          $ref: '#/components/schemas/Point'
-        shipping:
-          description: Shipping cost for this offer
-          type: string
-        price:
-          description: Item price excluding shipping
-          type: string
-        total:
-          description: Total price including shipping
-          type: string
-        link:
-          description: URL to purchase the book from this merchant
-          type: string
-      type: object
     Book:
       required:
       - title
@@ -351,6 +282,52 @@ components:
           items:
             $ref: '#/components/schemas/RelatedIsbn'
       type: object
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
+    SubjectDetailsResponse:
+      required:
+      - subject
+      - name
+      - books
+      - total
+      - page
+      - page_size
+      properties:
+        subject:
+          type: string
+        name:
+          type: string
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
     SearchSubjectResponse:
       required:
       - name
@@ -372,16 +349,39 @@ components:
         page_size:
           type: integer
       type: object
-    RelatedIsbn:
+    Price:
       required:
-      - isbn
-      - binding
+      - condition
+      - merchant
+      - merchant_logo
+      - merchant_logo_offset
+      - shipping
+      - price
+      - total
+      - link
       properties:
-        isbn:
-          description: ISBN-13 of the related edition
+        condition:
+          description: Condition of the book offered at this price (e.g. new, used, digital)
           type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+        merchant:
+          description: Name of the merchant offering this price
+          type: string
+        merchant_logo:
+          description: URL of the merchant logo image
+          type: string
+        merchant_logo_offset:
+          $ref: '#/components/schemas/Point'
+        shipping:
+          description: Shipping cost for this offer
+          type: string
+        price:
+          description: Item price excluding shipping
+          type: string
+        total:
+          description: Total price including shipping
+          type: string
+        link:
+          description: URL to purchase the book from this merchant
           type: string
       type: object
   securitySchemes:

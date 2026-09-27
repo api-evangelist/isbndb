@@ -142,72 +142,6 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    Point:
-      required:
-      - x
-      - y
-      properties:
-        x:
-          type: string
-        y:
-          type: string
-      type: object
-    SearchAuthorsResponse:
-      required:
-      - name
-      - authors
-      - total
-      - page
-      - page_size
-      properties:
-        name:
-          type: string
-        authors:
-          type: array
-          items:
-            type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
-      type: object
-    Price:
-      required:
-      - condition
-      - merchant
-      - merchant_logo
-      - merchant_logo_offset
-      - shipping
-      - price
-      - total
-      - link
-      properties:
-        condition:
-          description: Condition of the book offered at this price (e.g. new, used, digital)
-          type: string
-        merchant:
-          description: Name of the merchant offering this price
-          type: string
-        merchant_logo:
-          description: URL of the merchant logo image
-          type: string
-        merchant_logo_offset:
-          $ref: '#/components/schemas/Point'
-        shipping:
-          description: Shipping cost for this offer
-          type: string
-        price:
-          description: Item price excluding shipping
-          type: string
-        total:
-          description: Total price including shipping
-          type: string
-        link:
-          description: URL to purchase the book from this merchant
-          type: string
-      type: object
     Book:
       required:
       - title
@@ -386,6 +320,16 @@ components:
         page_size:
           type: integer
       type: object
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
     RelatedIsbn:
       required:
       - isbn
@@ -396,6 +340,62 @@ components:
           type: string
         binding:
           description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
+    SearchAuthorsResponse:
+      required:
+      - name
+      - authors
+      - total
+      - page
+      - page_size
+      properties:
+        name:
+          type: string
+        authors:
+          type: array
+          items:
+            type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+    Price:
+      required:
+      - condition
+      - merchant
+      - merchant_logo
+      - merchant_logo_offset
+      - shipping
+      - price
+      - total
+      - link
+      properties:
+        condition:
+          description: Condition of the book offered at this price (e.g. new, used, digital)
+          type: string
+        merchant:
+          description: Name of the merchant offering this price
+          type: string
+        merchant_logo:
+          description: URL of the merchant logo image
+          type: string
+        merchant_logo_offset:
+          $ref: '#/components/schemas/Point'
+        shipping:
+          description: Shipping cost for this offer
+          type: string
+        price:
+          description: Item price excluding shipping
+          type: string
+        total:
+          description: Total price including shipping
+          type: string
+        link:
+          description: URL to purchase the book from this merchant
           type: string
       type: object
   securitySchemes:
