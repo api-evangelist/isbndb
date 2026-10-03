@@ -79,6 +79,19 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
+    UpdatedBook:
+      required:
+      - isbn13
+      - updated_at
+      properties:
+        isbn13:
+          description: ISBN-13
+          type: string
+        updated_at:
+          description: Timestamp when the book was last updated
+          type: string
+          format: date-time
+      type: object
     UpdatedBooksResponse:
       required:
       - data
@@ -93,19 +106,6 @@ components:
           type: integer
         page_size:
           type: integer
-      type: object
-    UpdatedBook:
-      required:
-      - isbn13
-      - updated_at
-      properties:
-        isbn13:
-          description: ISBN-13
-          type: string
-        updated_at:
-          description: Timestamp when the book was last updated
-          type: string
-          format: date-time
       type: object
   securitySchemes:
     ApiKeyAuth:

@@ -238,6 +238,44 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
+    ErrorResponse:
+      required:
+      - message
+      - error_message
+      properties:
+        message:
+          type: string
+          deprecated: true
+        error_message:
+          type: string
+      type: object
+    GetBooksMultipleResponse:
+      required:
+      - total
+      - data
+      properties:
+        total:
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        requested:
+          type:
+          - integer
+          - 'null'
+          default: null
+      type: object
     Book:
       required:
       - title
@@ -392,28 +430,6 @@ components:
           items:
             $ref: '#/components/schemas/RelatedIsbn'
       type: object
-    Point:
-      required:
-      - x
-      - y
-      properties:
-        x:
-          type: string
-        y:
-          type: string
-      type: object
-    RelatedIsbn:
-      required:
-      - isbn
-      - binding
-      properties:
-        isbn:
-          description: ISBN-13 of the related edition
-          type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
-          type: string
-      type: object
     GetBooksMultipleRequest:
       required:
       - isbns
@@ -430,41 +446,6 @@ components:
               oneOf:
               - type: integer
               - type: string
-      type: object
-    GetBooksMultipleResponse:
-      required:
-      - total
-      - data
-      properties:
-        total:
-          type: integer
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        requested:
-          type:
-          - integer
-          - 'null'
-          default: null
-      type: object
-    ErrorResponse:
-      required:
-      - message
-      - error_message
-      properties:
-        message:
-          type: string
-          deprecated: true
-        error_message:
-          type: string
-      type: object
-    GetBookResponse:
-      required:
-      - book
-      properties:
-        book:
-          $ref: '#/components/schemas/Book'
       type: object
     Price:
       required:
@@ -500,6 +481,25 @@ components:
         link:
           description: URL to purchase the book from this merchant
           type: string
+      type: object
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
+    GetBookResponse:
+      required:
+      - book
+      properties:
+        book:
+          $ref: '#/components/schemas/Book'
       type: object
   securitySchemes:
     ApiKeyAuth:

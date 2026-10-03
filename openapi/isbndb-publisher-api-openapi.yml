@@ -128,6 +128,16 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
+    Point:
+      required:
+      - x
+      - y
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      type: object
     Book:
       required:
       - title
@@ -282,70 +292,6 @@ components:
           items:
             $ref: '#/components/schemas/RelatedIsbn'
       type: object
-    DetailsResponse:
-      required:
-      - name
-      - books
-      - total
-      - page
-      - page_size
-      properties:
-        name:
-          type: string
-        books:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
-      type: object
-    Point:
-      required:
-      - x
-      - y
-      properties:
-        x:
-          type: string
-        y:
-          type: string
-      type: object
-    RelatedIsbn:
-      required:
-      - isbn
-      - binding
-      properties:
-        isbn:
-          description: ISBN-13 of the related edition
-          type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
-          type: string
-      type: object
-    SearchPublishersResponse:
-      required:
-      - name
-      - publishers
-      - total
-      - page
-      - page_size
-      properties:
-        name:
-          type: string
-        publishers:
-          type: array
-          items:
-            type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
-      type: object
     Price:
       required:
       - condition
@@ -380,6 +326,60 @@ components:
         link:
           description: URL to purchase the book from this merchant
           type: string
+      type: object
+    SearchPublishersResponse:
+      required:
+      - name
+      - publishers
+      - total
+      - page
+      - page_size
+      properties:
+        name:
+          type: string
+        publishers:
+          type: array
+          items:
+            type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+      type: object
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
+    DetailsResponse:
+      required:
+      - name
+      - books
+      - total
+      - page
+      - page_size
+      properties:
+        name:
+          type: string
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
       type: object
   securitySchemes:
     ApiKeyAuth:
