@@ -39,6 +39,16 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
+    KeyResponse:
+      required:
+      - api_host
+      - plan_limit
+      properties:
+        api_host:
+          type: string
+        plan_limit:
+          $ref: '#/components/schemas/PlanLimit'
+      type: object
     PlanLimit:
       required:
       - total
@@ -51,16 +61,6 @@ components:
           type: integer
         left:
           type: integer
-      type: object
-    KeyResponse:
-      required:
-      - api_host
-      - plan_limit
-      properties:
-        api_host:
-          type: string
-        plan_limit:
-          $ref: '#/components/schemas/PlanLimit'
       type: object
   securitySchemes:
     ApiKeyAuth:

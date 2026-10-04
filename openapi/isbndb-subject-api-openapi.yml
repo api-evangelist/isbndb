@@ -128,6 +128,18 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
+          type: string
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
+          type: string
+      type: object
     SubjectDetailsResponse:
       required:
       - subject
@@ -152,15 +164,26 @@ components:
         page_size:
           type: integer
       type: object
-    Point:
+    SearchSubjectResponse:
       required:
-      - x
-      - y
+      - name
+      - subjects
+      - total
+      - page
+      - page_size
       properties:
-        x:
+        name:
           type: string
-        y:
-          type: string
+        subjects:
+          type: array
+          items:
+            type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
       type: object
     Book:
       required:
@@ -316,26 +339,15 @@ components:
           items:
             $ref: '#/components/schemas/RelatedIsbn'
       type: object
-    SearchSubjectResponse:
+    Point:
       required:
-      - name
-      - subjects
-      - total
-      - page
-      - page_size
+      - x
+      - y
       properties:
-        name:
+        x:
           type: string
-        subjects:
-          type: array
-          items:
-            type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
+        y:
+          type: string
       type: object
     Price:
       required:
@@ -370,18 +382,6 @@ components:
           type: string
         link:
           description: URL to purchase the book from this merchant
-          type: string
-      type: object
-    RelatedIsbn:
-      required:
-      - isbn
-      - binding
-      properties:
-        isbn:
-          description: ISBN-13 of the related edition
-          type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
           type: string
       type: object
   securitySchemes:

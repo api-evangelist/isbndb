@@ -142,15 +142,41 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    Point:
+    RelatedIsbn:
       required:
-      - x
-      - y
+      - isbn
+      - binding
       properties:
-        x:
+        isbn:
+          description: ISBN-13 of the related edition
           type: string
-        y:
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
           type: string
+      type: object
+    AuthorDetailsResponse:
+      required:
+      - author
+      - name
+      - books
+      - total
+      - page
+      - page_size
+      properties:
+        author:
+          type: string
+        name:
+          type: string
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+        total:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
       type: object
     Book:
       required:
@@ -327,29 +353,15 @@ components:
         page_size:
           type: integer
       type: object
-    AuthorDetailsResponse:
+    Point:
       required:
-      - author
-      - name
-      - books
-      - total
-      - page
-      - page_size
+      - x
+      - y
       properties:
-        author:
+        x:
           type: string
-        name:
+        y:
           type: string
-        books:
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
-        total:
-          type: integer
-        page:
-          type: integer
-        page_size:
-          type: integer
       type: object
     Price:
       required:
@@ -384,18 +396,6 @@ components:
           type: string
         link:
           description: URL to purchase the book from this merchant
-          type: string
-      type: object
-    RelatedIsbn:
-      required:
-      - isbn
-      - binding
-      properties:
-        isbn:
-          description: ISBN-13 of the related edition
-          type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
           type: string
       type: object
   securitySchemes:

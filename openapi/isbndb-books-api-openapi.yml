@@ -238,14 +238,33 @@ paths:
       - ApiKeyAuth: []
 components:
   schemas:
-    Point:
+    GetBooksMultipleRequest:
       required:
-      - x
-      - y
+      - isbns
       properties:
-        x:
+        isbns:
+          oneOf:
+          - type: array
+            items:
+              oneOf:
+              - type: integer
+              - type: string
+          - type: object
+            additionalProperties:
+              oneOf:
+              - type: integer
+              - type: string
+      type: object
+    RelatedIsbn:
+      required:
+      - isbn
+      - binding
+      properties:
+        isbn:
+          description: ISBN-13 of the related edition
           type: string
-        y:
+        binding:
+          description: Binding type of the related edition (e.g. Hardcover, Paperback)
           type: string
       type: object
     ErrorResponse:
@@ -430,22 +449,22 @@ components:
           items:
             $ref: '#/components/schemas/RelatedIsbn'
       type: object
-    GetBooksMultipleRequest:
+    Point:
       required:
-      - isbns
+      - x
+      - y
       properties:
-        isbns:
-          oneOf:
-          - type: array
-            items:
-              oneOf:
-              - type: integer
-              - type: string
-          - type: object
-            additionalProperties:
-              oneOf:
-              - type: integer
-              - type: string
+        x:
+          type: string
+        y:
+          type: string
+      type: object
+    GetBookResponse:
+      required:
+      - book
+      properties:
+        book:
+          $ref: '#/components/schemas/Book'
       type: object
     Price:
       required:
@@ -481,25 +500,6 @@ components:
         link:
           description: URL to purchase the book from this merchant
           type: string
-      type: object
-    RelatedIsbn:
-      required:
-      - isbn
-      - binding
-      properties:
-        isbn:
-          description: ISBN-13 of the related edition
-          type: string
-        binding:
-          description: Binding type of the related edition (e.g. Hardcover, Paperback)
-          type: string
-      type: object
-    GetBookResponse:
-      required:
-      - book
-      properties:
-        book:
-          $ref: '#/components/schemas/Book'
       type: object
   securitySchemes:
     ApiKeyAuth:
