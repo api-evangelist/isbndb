@@ -64,51 +64,158 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-ISBNdb is the world's largest book database REST API providing access to metadata for over 110 million books and publications. Search by ISBN (ISBN-10 or ISBN-13), title, author, publisher, or subject to retrieve up to 19 data points per book including cover images, publication dates, descriptions, and real-time pricing.
+ISBNdb is the world's largest book database REST API providing access to metadata for over 110 million books and publications. Search by ISBN (ISBN-10 or ISBN-13), title, author, publisher, or subject to retrieve up to 19 data points per book including cover images, publication dates, descriptions, and real-time pricing. The API supports bulk lookups of up to 1,000 ISBNs per request on eligible plans.
 
-## API
+**Areas:** Books · ISBN · Publishing · Metadata · Library · Bibliography
 
-- **Base URL:** https://api2.isbndb.com
-- **Documentation:** https://isbndb.com/api-documentation
-- **OpenAPI Spec:** https://api2.isbndb.com/doc.json
-- **Pricing:** https://isbndb.com/isbn-database
+## ISBNdb on APIs.io
 
-## Authentication
+Everything profiled for ISBNdb is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/isbndb/](https://apis.io/providers/isbndb/)** — or go straight to one of the APIs or properties below.
 
-All requests require an API key passed in the `x-api-key` request header. Keys are obtained by subscribing to one of the available plans.
+### APIs (8)
 
-## Key Endpoints
+- [ISBNdb Author API](https://apis.io/apis/isbndb/isbndb-author-api/) — Author endpoints
+- [ISBNdb Books API](https://apis.io/apis/isbndb/isbndb-books-api/) — Book endpoints
+- [ISBNdb Feed API](https://apis.io/apis/isbndb/isbndb-feed-api/) — Feed endpoints for incremental sync
+- [ISBNdb Key API](https://apis.io/apis/isbndb/isbndb-key-api/) — API key management
+- [ISBNdb Publisher API](https://apis.io/apis/isbndb/isbndb-publisher-api/) — Publisher endpoints
+- [ISBNdb Search API](https://apis.io/apis/isbndb/isbndb-search-api/) — Legacy search endpoints (deprecated)
+- [ISBNdb Stats API](https://apis.io/apis/isbndb/isbndb-stats-api/) — Database statistics
+- [ISBNdb Subject API](https://apis.io/apis/isbndb/isbndb-subject-api/) — Subject endpoints
 
-| Endpoint | Description |
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Isbndb Agentic Access](https://apis.io/agentic-access/isbndb/isbndb-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Book](https://apis.io/schemas/isbndb/book/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Isbndb Context](https://apis.io/jsonld/isbndb/isbndb-context/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Author Details Response](https://apis.io/examples/isbndb/author-details-response/)
+- [Book Get Response](https://apis.io/examples/isbndb/book-get-response/)
+- [Books Bulk Request](https://apis.io/examples/isbndb/books-bulk-request/)
+- [Books Search Response](https://apis.io/examples/isbndb/books-search-response/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [ISBNdb API v2 Author API](https://apis.io/collections/isbndb/open-isbndb-author-api/)
+- [ISBNdb API v2 Books API](https://apis.io/collections/isbndb/open-isbndb-books-api/)
+- [ISBNdb API v2 Feed API](https://apis.io/collections/isbndb/open-isbndb-feed-api/)
+- [ISBNdb API v2 Key API](https://apis.io/collections/isbndb/open-isbndb-key-api/)
+- [ISBNdb API v2 Publisher API](https://apis.io/collections/isbndb/open-isbndb-publisher-api/)
+- [ISBNdb API v2 Search API](https://apis.io/collections/isbndb/open-isbndb-search-api/)
+- [ISBNdb API v2 Stats API](https://apis.io/collections/isbndb/open-isbndb-stats-api/)
+- [ISBNdb API v2 Subject API](https://apis.io/collections/isbndb/open-isbndb-subject-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [ISBNdb — jsonschema rules](https://apis.io/rules/isbndb/isbndb-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Isbndb Authentication](https://apis.io/security/isbndb/isbndb-authentication/)
+- [Isbndb Domain Security](https://apis.io/security/isbndb/isbndb-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Isbndb Plans Pricing](https://apis.io/plans/isbndb/isbndb-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Isbndb Rate Limits](https://apis.io/rate-limits/isbndb/isbndb-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Isbndb Finops](https://apis.io/finops/isbndb/isbndb-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://isbndb.com)
+- [Documentation](https://isbndb.com/api-documentation)
+- [Pricing](https://isbndb.com/isbn-database)
+- [Blog](https://isbndb.com/blog/)
+
+## API Evangelist rating
+
+**Kin Score 30.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| `GET /book/{isbn}` | Retrieve book details by ISBN-10 or ISBN-13 |
-| `POST /books` | Bulk lookup of up to 1,000 ISBNs (Premium+ plans) |
-| `GET /books/{query}` | Search books by title, author, subject, or other criteria |
-| `GET /author/{name}` | Get author details and bibliography |
-| `GET /authors/{query}` | Search for authors by name |
-| `GET /publisher/{name}` | Get publisher details and publications |
-| `GET /publishers/{query}` | Search publishers by name |
-| `GET /subject/{name}` | Get subject details with related books |
-| `GET /subjects/{query}` | Search subjects |
-| `GET /feeds/books/updates` | Recent additions and updates (Premium+ only) |
-| `GET /key` | Current API key details and quota usage |
-| `GET /stats` | Database statistics |
+| Discoverability | 66.1 |
+| Contract quality | 51.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 18.4 |
 
-## Plans
+**Agent readiness 17.9** — agent-aware
 
-| Plan | Price | Daily Calls | Req/Sec |
-|---|---|---|---|
-| Basic | $14.99/mo | 1,000 | 1 |
-| Academic | $14.99/mo | 2,000 | 1 |
-| Premium | $35.99/mo | 5,000 | 3 |
-| Pro | $99.99/mo | 15,000 | 5 |
-| Enterprise | $299.99/mo | 50,000 | 10 |
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-A 7-day free trial is available on the Basic plan. No contract required; cancel any time.
+**Regulatory alignment 16.7** — Education & Research
 
-## Resources
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/isbndb/](https://apis.io/providers/isbndb/).
 
-- [plans/isbndb-plans-pricing.yml](plans/isbndb-plans-pricing.yml) - Detailed plan and pricing information
-- [rate-limits/isbndb-rate-limits.yml](rate-limits/isbndb-rate-limits.yml) - Rate limit policies by plan
-- [finops/isbndb-finops.yml](finops/isbndb-finops.yml) - FinOps guidance and cost optimization tips
-- [apis.yml](apis.yml) - APIs.json 0.19 provider profile
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ISBNdb: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/isbndb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
